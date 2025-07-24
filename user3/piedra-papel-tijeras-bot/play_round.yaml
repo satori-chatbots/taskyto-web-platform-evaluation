@@ -1,0 +1,76 @@
+# -----> File: play_round.yaml <-----
+name: play_round
+kind: data_gathering
+description: |
+  In this step, the user will choose rock, paper, or scissors. The assistant will also make a choice.
+data:
+  - user_choice:
+      type: enum
+      values:
+        - rock
+        - paper
+        - scissors
+
+on-success:
+  execute:
+    language: python
+    code: |
+      import random
+      import json
+      import os
+
+      def play_round():
+          choices = ['rock', 'paper', 'scissors']
+          assistant_choice = random.choice(choices)
+          result_int = 0
+          
+          if user_choice == assistant_choice:
+              result = "It's a tie!"
+              result_int = 0
+          elif (user_choice == 'rock' and assistant_choice == 'scissors') or \
+              (user_choice == 'paper' and assistant_choice == 'rock') or \
+              (user_choice == 'scissors' and assistant_choice == 'paper'):
+              result = "You win this round!"
+              result_int = 1
+          else:
+              result = "The assistant wins this round!"
+              result_int = -1
+          
+          return f"You chose {user_choice}. The assistant chose {assistant_choice}. {result}", result_int
+
+      def check_winner(result, result_int):
+          scores = {'player': 0, 'assistant': 0}
+          if os.path.exists('scores.json'):
+              # Load the current scores
+              with open('scores.json', 'r') as f:
+                  scores = json.load(f)
+
+          # Update scores based on the result from the previous round
+          if result_int == 1:
+              scores['player'] += 1
+          elif result_int == -1:
+              scores['assistant'] += 1
+
+          # Check if someone has won the best of 3
+          if scores['player'] >= 3:
+              final_result = "Congratulations! You won the game!"
+              scores = {'player': 0, 'assistant': 0}  # Reset scores
+          elif scores['assistant'] >= 3:
+              final_result = "The assistant wins the game! Better luck next time."
+              scores = {'player': 0, 'assistant': 0}  # Reset scores
+          else:
+              final_result = f"The game continues!\nScore: Player {scores['player']}, Assistant {scores['assistant']}"
+
+          # Save updated scores
+          with open('scores.json', 'w') as f:
+              json.dump(scores, f)
+
+          return f"{result}\n{final_result}"
+        #   return scores
+
+      result, result_int = play_round()
+      return check_winner(result, result_int)
+
+  response:
+    text: "{result}"
+    rephrase: simple

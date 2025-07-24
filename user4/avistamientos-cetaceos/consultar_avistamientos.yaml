@@ -1,0 +1,10 @@
+name: consultar_avistamientos
+kind: action
+data: []
+on-success:
+  execute:
+    language: python
+    code: retrieve_sightings.py
+  response:
+    text: "Aquí están los avistamientos registrados:\n{result}"
+    rephrase: simple

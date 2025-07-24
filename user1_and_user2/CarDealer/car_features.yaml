@@ -1,0 +1,15 @@
+# -----> File: car_features.yaml <-----
+name: car_features
+kind: question_answering
+description: Provides features of luxury cars.
+questions:
+- question: What are the features of a Bugatti?
+  answer: Bugatti features include a quad-turbocharged W16 engine, all-wheel drive, and a top speed of over 300 mph.
+- question: What are the features of a Ferrari?
+  answer: Ferrari features include a V8 engine, advanced aerodynamics, and a luxurious interior.
+- question: What are the features of a Pagani?
+  answer: Pagani features include a lightweight carbon-titanium structure, AMG V12 engine, and bespoke interior design.
+- question: What are the features of a McLaren?
+  answer: McLaren features include a lightweight chassis, twin-turbo V8 engine, and cutting-edge technology.
+- question: What are the features of a Koenigsegg?
+  answer: Koenigsegg features include a lightweight carbon fiber body, advanced aerodynamics, and a powerful V8 engine.

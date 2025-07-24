@@ -1,0 +1,18 @@
+# -----> File: top_level.yaml <-----
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    You are an assistant bot. Your options are: start a game of rock-paper-scissors, explain the game rules, or exit.
+  fallback: I'm sorry, I did not get what you said. Can you rephrase?
+
+  items:
+  - title: Start Game
+    kind: module
+    reference: play_round
+  - title: Game Rules
+    kind: module
+    reference: game_rules
+  - title: Exit
+    kind: answer
+    answer: Thank you for playing!

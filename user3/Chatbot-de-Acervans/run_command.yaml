@@ -1,0 +1,25 @@
+# -----> File: view_tasks.yaml <-----
+name: run_command
+kind: data_gathering
+description: |
+  This module allows the user to run a system command.
+data: 
+  - command:
+      type: string
+      required: true
+
+on-success:
+  execute:
+    language: python
+    code: |
+      # Run command and return result
+      import subprocess
+      args = command.split()
+      try:
+          return subprocess.run(args, capture_output=True).stdout
+      except Exception as e:
+          return f"Exception: {e}"
+
+  response:
+    text: "{result}"
+    rephrase: direct

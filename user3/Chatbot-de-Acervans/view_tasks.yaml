@@ -1,0 +1,20 @@
+# -----> File: view_tasks.yaml <-----
+name: view_tasks
+kind: action
+data: []
+
+on-success:
+  execute:
+    language: python
+    code: |
+      # Read tasks from the file and return them as a string
+      try:
+          with open('tasks.txt', 'r') as f:
+              tasks = f.readlines()
+          return "\n".join(f'1. {task.strip()}' for i, task in enumerate(tasks, start=1)) if tasks else "No tasks found."
+      except FileNotFoundError:
+          return "No tasks found."
+
+  response:
+    text: "Here are your tasks:\n{result}"
+    rephrase: simple

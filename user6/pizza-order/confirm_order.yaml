@@ -1,0 +1,36 @@
+# -----> File: confirm_order.yaml <-----
+name: confirm_order
+kind: action
+data:
+  - pizza_size:
+      type: enum
+      values:
+        - Small
+        - Medium
+        - Large
+  - num_drinks:
+      type: integer
+  - drinks:
+      type: enum
+      values:
+        - coke
+        - sprite
+        - water
+
+on-success:
+  execute:
+    language: python
+    code: |
+      import random
+      import string
+
+      # Generate a unique order ID of 6 characters (letters and digits)
+      order_id = ''.join(random.choices(string.ascii_letters + string.digits, k=6))
+
+      # Prepare the confirmation message
+      confirmation_message = f"Your order will be ready in 15 minutes. Please visit our shop at 23 Main Street, NY. Your order ID is {order_id}."
+      
+      return confirmation_message
+  response:
+    text: "{result}"
+    rephrase: simple

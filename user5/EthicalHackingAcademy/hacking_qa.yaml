@@ -1,0 +1,12 @@
+# -----> File: hacking_qa.yaml <-----
+modules:
+- name: hacking_qa
+  kind: question_answering
+  description: Answers common questions related to hacking.
+  questions:
+  - question: What is ethical hacking?
+    answer: Ethical hacking involves legally breaking into computers and devices to test an organization's defenses.
+  - question: What tools do hackers use?
+    answer: Common tools include Metasploit, Nmap, Wireshark, and Burp Suite.
+  - question: How can I protect myself from hackers?
+    answer: Use strong passwords, enable two-factor authentication, and keep your software updated.

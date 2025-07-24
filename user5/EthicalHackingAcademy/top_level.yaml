@@ -1,0 +1,25 @@
+# -----> File: top_level.yaml <-----
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to the Hacking Academy chatbot! I can help you with information about our courses, enrollment, and general hacking knowledge.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: Course Information
+    kind: module
+    reference: course_info
+  - title: Enrollment Process
+    kind: sequence
+    memory: full
+    references:
+      - gather_user_info
+      - confirm_enrollment
+  - title: Hacking Q&A
+    kind: module
+    reference: hacking_qa
+  - title: Welcome Message
+    kind: answer
+    answer: |
+      Hello! I'm here to assist you with anything related to our hacking academy. What would you like to know?

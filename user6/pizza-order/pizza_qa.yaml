@@ -1,0 +1,22 @@
+# -----> File: pizza_qa.yaml <-----
+name: pizza_qa
+kind: question_answering
+description: This module answers common questions about the pizza shop.
+questions:
+- question: What types of pizzas do you offer?
+  answer: We offer a variety of pizzas including Margherita, Carbonara, Marinera, Hawaiian, Four Cheese, Vegetarian, and Custom (you choose the ingredients).
+- question: What are your opening hours?
+  answer: We are open from 1 PM to 11:30 PM every day.
+- question: Do you offer delivery?
+  answer: No, we do not offer delivery. We are located at 23 Main Street, New York. You need to pick up your order at the shop.
+- question: What are the prices of the pizzas?
+  answer: | 
+    The prices are as follows: 
+    - Margherita: Small: $10, Medium: $15, Large: $20
+    - Carbonara: Small: $12.5, Medium: $17.5, Large: $22.5
+    - Other predefined pizzas: Small: $12, Medium: $17, Large: $22
+    - Custom pizzas have the same price as Margherita, but for each ingredient beyond the third, an additional $0.5 will be added.
+- question: What are the prices of the beverages?
+  answer: Water costs $1, and Sprite costs $1.5.
+- question: How long does it take to prepare a pizza?
+  answer: The estimated preparation time for each pizza is approximately 15 minutes.

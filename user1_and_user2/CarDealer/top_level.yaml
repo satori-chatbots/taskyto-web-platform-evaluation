@@ -1,0 +1,24 @@
+# -----> File: top_level.yaml <-----
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to the Luxury Car Dealer Chatbot! How can I assist you today?
+  fallback: I'm sorry, I didn't understand that. Can you please rephrase?
+  items:
+  - title: Show Car Prices
+    kind: module
+    reference: car_prices
+  - title: Show Car Features
+    kind: module
+    reference: car_features
+  - title: Compare Cars
+    kind: module
+    reference: car_comparison
+  - title: Show Available Cars
+    kind: module
+    reference: available_cars
+  - title: Welcome Message
+    kind: answer
+    answer: |
+      Welcome to our luxury car dealership! I can help you with prices, features, and comparisons of our high-end cars.

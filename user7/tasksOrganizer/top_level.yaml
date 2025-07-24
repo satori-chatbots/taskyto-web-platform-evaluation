@@ -1,0 +1,16 @@
+# -----> File: top_level.yaml <-----
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to the household task assistant. This chatbot will help you distribute tasks based on available time and pending tasks.
+  fallback: I'm sorry, I didn't understand what you said. Can you rephrase it?
+
+  items:
+  - title: Distribute tasks
+    #memory: full
+    kind: module
+    reference: assign_tasks
+  - title: Frequently Asked Questions
+    kind: module
+    reference: faq

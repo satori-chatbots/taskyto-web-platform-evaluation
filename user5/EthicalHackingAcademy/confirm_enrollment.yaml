@@ -1,0 +1,9 @@
+# -----> File: confirm_enrollment.yaml <-----
+modules:
+- name: confirm_enrollment
+  kind: action
+  data: []
+  on-success:
+    response:
+      text: "Your information has been successfully updated! Your enrollment has been confirmed, and we look forward to seeing you at the Hacking Academy."
+      rephrase: simple

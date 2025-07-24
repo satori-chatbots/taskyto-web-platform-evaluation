@@ -1,0 +1,18 @@
+# -----> File: available_cars.yaml <-----
+name: available_cars
+kind: question_answering
+description: Provides a list of available luxury cars for sale.
+questions:
+- question: What cars are available?
+  answer: |
+    We currently have the following luxury cars available for sale:
+    - Bugatti
+    - Ferrari
+    - Pagani
+    - McLaren
+    - Koenigsegg
+
+on-success:
+  response:
+    text: "Here are the available cars: {result}"
+    rephrase: simple

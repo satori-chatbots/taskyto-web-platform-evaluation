@@ -1,0 +1,26 @@
+# -----> File: predefined_pizza.yaml <-----
+name: predefined_pizza
+kind: data_gathering
+description: |
+  Please select the type and size of your predefined pizza.
+data:
+  - pizza_type:
+      type: enum
+      values:
+        - Margherita
+        - Carbonara
+        - Marinera
+        - Hawaiian
+        - Four Cheese
+        - Vegetarian
+  - pizza_size:
+      type: enum
+      values:
+        - Small
+        - Medium
+        - Large
+
+on-success:
+  response:
+    text: "Thank you for your order! You have ordered a {pizza_size} {pizza_type} pizza."
+    rephrase: in-caller

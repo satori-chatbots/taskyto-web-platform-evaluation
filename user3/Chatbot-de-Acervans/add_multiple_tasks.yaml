@@ -1,0 +1,29 @@
+# -----> File: add_multiple_tasks.yaml <-----
+name: add_multiple_tasks
+kind: data_gathering
+description: |
+  This module allows the user to add multiple tasks to their note at once. 
+  Make sure not to add previous tasks again.
+  Please separate each task with a comma.
+data:
+  - tasks:
+      type: string
+      required: true
+
+on-success:
+  execute:
+    language: python
+    code: |
+      # Split the input tasks by comma and strip whitespace
+      tasks_list = [task.strip() for task in tasks.split(',')]
+      
+      # Open the file in append mode and write each task
+      with open('tasks.txt', 'a') as f:
+          for task in tasks_list:
+              f.write(f"{task}\n")
+      
+      return f"{len(tasks_list)} tasks have been added."
+  
+  response:
+    text: "Tasks '{tasks}' have been added to your note."
+    rephrase: simple

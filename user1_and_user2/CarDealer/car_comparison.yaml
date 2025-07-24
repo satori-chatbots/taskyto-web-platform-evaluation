@@ -1,0 +1,29 @@
+# -----> File: car_comparison.yaml <-----
+name: car_comparison
+kind: data_gathering
+description: Gathers information to compare two luxury cars.
+data:
+  - car1:
+      type: enum
+      values:
+        - Bugatti
+        - Ferrari
+        - Pagani
+        - McLaren
+        - Koenigsegg
+  - car2:
+      type: enum
+      values:
+        - Bugatti
+        - Ferrari
+        - Pagani
+        - McLaren
+        - Koenigsegg
+
+on-success:
+  execute:
+    language: python
+    code: compare_cars.py
+  response:
+    text: "Comparison results for {car1} and {car2}: {result}"
+    rephrase: simple

@@ -1,0 +1,28 @@
+# -----> File: inquire_reservations.yaml <-----
+name: inquire_reservations
+kind: data_gathering
+description: |
+  This module allows users to inquire about their reservations by providing their booking reference number.
+data:
+  - booking_reference: string
+
+on-success:
+  execute:
+    language: python
+    code: |
+      def main(booking_reference):
+          try:
+              with open('reservations.txt', 'r') as file:
+                  reservations = file.readlines()
+                  for reservation in reservations:
+                      if booking_reference in reservation:
+                          return reservation.strip()
+              return "No reservation found with that reference number."
+          except FileNotFoundError:
+              return "No reservations have been made yet."
+      
+      return main(booking_reference)
+
+  response:
+    text: "{result}"
+    rephrase: simple

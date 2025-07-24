@@ -1,0 +1,17 @@
+# -----> File: assign_tasks.yaml <-----
+name: assign_tasks
+kind: menu
+presentation: |
+  In this module, we will gather information about the available time, pending tasks, and available people to distribute them effectively.
+fallback: I'm sorry, I didn't understand what you said. Can you rephrase it?
+
+items:
+- title: Provide available time
+  kind: module
+  reference: gather_time
+- title: Provide pending tasks
+  kind: module
+  reference: gather_tasks
+- title: Provide available people and their times
+  kind: module
+  reference: gather_people

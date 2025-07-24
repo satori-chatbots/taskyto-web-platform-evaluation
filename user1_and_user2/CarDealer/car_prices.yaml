@@ -1,0 +1,14 @@
+name: car_prices
+kind: question_answering
+description: Provides the prices of luxury cars.
+questions:
+- question: What is the price of a Bugatti?
+  answer: The price of a Bugatti starts at $2.5 million.
+- question: What is the price of a Ferrari?
+  answer: The price of a Ferrari starts at $215,000.
+- question: What is the price of a Pagani?
+  answer: The price of a Pagani starts at $2.6 million.
+- question: What is the price of a McLaren?
+  answer: The price of a McLaren starts at $210,000.
+- question: What is the price of a Koenigsegg?
+  answer: The price of a Koenigsegg starts at $3 million.

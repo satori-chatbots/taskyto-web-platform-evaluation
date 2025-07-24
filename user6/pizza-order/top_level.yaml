@@ -1,0 +1,20 @@
+# -----> File: top_level.yaml <-----
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to the Pizza Shop Chatbot! I'm here to help you with your pizza orders and answer any questions you may have.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: Pizza Q&A
+    kind: module
+    reference: pizza_qa
+  - title: Proceed with a whether a predefined pizza or a custom pizza
+    memory: full
+    kind: module
+    reference: order_pizza
+  - title: Welcome Message
+    kind: answer
+    answer: |
+      Hello! I'm your assistant for ordering pizzas. What can I help you with today?

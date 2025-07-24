@@ -1,0 +1,24 @@
+# -----> File: top_level.yaml <-----
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    You are a helpful assistant that can help create notes with a list of tasks. You can also run system commands.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: Add a task
+    kind: module
+    reference: add_task
+  - title: Add several tasks
+    kind: module
+    reference: add_multiple_tasks
+  - title: View tasks
+    kind: module
+    reference: view_tasks
+  - title: Delete a task by index
+    kind: module
+    reference: delete_task
+  - title: Run command
+    kind: module
+    reference: run_command

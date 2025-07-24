@@ -1,0 +1,25 @@
+# -----> File: order_pizza.yaml <-----
+name: order_pizza
+kind: menu
+presentation: |
+  Ask the user to choose between a Predefined Pizza (Margherita, Carbonara, Marinera, Hawaiian, Four Cheese, and Vegetarian.) or a Custom Pizza (Ingredients -> Cheese, Mushrooms, Pepper, Ham, Bacon, Pepperoni, Olives, Corn, Chicken)
+fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+items:
+  - title: Predefined Pizza (Margherita, Carbonara, Marinera, Hawaiian, Four Cheese, and Vegetarian.)
+    kind: sequence
+    memory: full
+    references: 
+      - predefined_pizza
+      - order_drinks
+      - calculate_total_price_predefined
+      - confirm_order
+
+  - title: Custom Pizza (Ingredients -> Cheese, Mushrooms, Pepper, Ham, Bacon, Pepperoni, Olives, Corn, Chicken)
+    kind: sequence
+    memory: full
+    references: 
+      - custom_pizza
+      - order_drinks
+      - calculate_total_price_custom
+      - confirm_order

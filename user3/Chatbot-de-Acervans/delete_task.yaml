@@ -1,0 +1,36 @@
+# -----> File: delete_task.yaml <-----
+name: delete_task
+kind: data_gathering
+description: |
+  This module allows the user to delete a specified task from their note by indicating the list number (1-based index).
+data:
+  - index:
+      type: integer
+      required: true
+
+on-success:
+  execute:
+    language: python
+    code: |
+      index_to_delete = index - 1  # Convert to 0-based index
+      try:
+          with open('tasks.txt', 'r') as f:
+              tasks = f.readlines()
+          
+          if index_to_delete < 0 or index_to_delete >= len(tasks):
+              return "Invalid task index."
+
+          # Remove the specified task
+          deleted_task = tasks.pop(index_to_delete).strip()
+          
+          # Write the updated tasks back to the file
+          with open('tasks.txt', 'w') as f:
+              f.writelines(tasks)
+          
+          return f"Task '{deleted_task}' has been deleted."
+      except FileNotFoundError:
+          return "No tasks found."
+
+  response:
+    text: "{result}"
+    rephrase: simple

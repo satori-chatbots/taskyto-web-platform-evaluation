@@ -1,0 +1,20 @@
+# -----> File: order_drinks.yaml <-----
+name: order_drinks
+kind: data_gathering
+description: |
+  Please specify the number of drinks you would like to order. You can choose from Coke, Water, or Sprite.
+data:
+  - num_drinks:
+      type: integer
+      required: true
+  - drinks:
+      type: enum
+      values:
+        - coke
+        - sprite
+        - water
+
+on-success:
+  response:
+    text: "You have ordered {num_drinks} {drinks}."
+    rephrase: simple

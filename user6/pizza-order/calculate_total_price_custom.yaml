@@ -1,0 +1,62 @@
+# -----> File: calculate_total_price_custom.yaml <-----
+name: calculate_total_price_custom
+kind: action
+data:
+  - pizza_size:
+      type: enum
+      values:
+        - Small
+        - Medium
+        - Large
+  - num_drinks:
+      type: integer
+  - drinks:
+      type: enum
+      values:
+        - coke
+        - sprite
+        - water
+  - toppings:
+      type: enum
+      values:
+        - cheese
+        - mushrooms
+        - pepper
+        - ham
+        - bacon
+        - pepperoni
+        - olives
+        - corn
+        - chicken
+
+on-success:
+  execute:
+    language: python
+    code: |
+      base_prices = {
+          "Small": 10,
+          "Medium": 15,
+          "Large": 20,
+      }
+      drink_prices = {
+          "coke": 1.5,
+          "sprite": 1.5,
+          "water": 1,
+      }
+
+      pizza_price = base_prices[pizza_size]
+
+      # Calculate additional cost for toppings
+      num_toppings = len(toppings)
+      if num_toppings > 3:
+          additional_cost = (num_toppings - 3) * 0.5
+      else:
+          additional_cost = 0
+
+      total_drink_price = num_drinks * drink_prices[drinks]
+      total_price = pizza_price + additional_cost + total_drink_price
+
+      return f"The total price for your order is ${total_price:.2f}."
+  response:
+    text: "{result}"
+    rephrase: simple

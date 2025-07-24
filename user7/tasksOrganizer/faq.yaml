@@ -1,0 +1,15 @@
+# -----> File: faq.yaml <-----
+name: faq
+kind: question_answering
+description: Useful for answering frequently asked questions about the household task distribution chatbot.
+questions:
+- question: How do I use this chatbot?
+  answer: Simple! Just provide your available time and the tasks you need to complete, and I will help you distribute them.
+- question: Can I add more tasks later?
+  answer: Yes, you can always come back and add more tasks whenever you need.
+- question: What if I have no time available?
+  answer: If you have no time available, I recommend scheduling some time for your tasks to ensure they get done.
+- question: Can I remove tasks after assigning them?
+  answer: Yes, you can remove tasks at any time. Just let me know which tasks you want to remove.
+- question: Is there a limit to the number of tasks I can provide?
+  answer: There is no strict limit, but try to keep it manageable for effective distribution.

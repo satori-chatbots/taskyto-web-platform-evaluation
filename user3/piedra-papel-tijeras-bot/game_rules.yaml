@@ -1,0 +1,9 @@
+# -----> File: game_rules.yaml <-----
+name: game_rules
+kind: question_answering
+description: Rules of the Rock-Paper-Scissors game.
+questions:
+- question: What are the rules of the game?
+  answer: |
+    You will play against the assistant in a best of 3 match. Choose rock, paper, or scissors. 
+    Rock beats scissors, scissors beats paper, and paper beats rock. The first to win 2 rounds wins the game.

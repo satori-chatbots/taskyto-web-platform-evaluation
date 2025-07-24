@@ -1,0 +1,9 @@
+# -----> File: enrollment_process.yaml <-----
+modules:
+- name: enrollment_process
+  kind: sequence
+  memory: full
+  description: This module gathers user information for enrollment in the academy and remembers the inputs.
+  references:
+    - gather_user_info
+    - confirm_enrollment

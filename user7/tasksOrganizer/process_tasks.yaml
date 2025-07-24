@@ -1,0 +1,20 @@
+# -----> File: process_tasks.yaml <-----
+name: process_tasks
+kind: action
+data:
+  - available_time:
+      type: number
+  - tasks:
+      type: string
+  - people:
+      type: string
+  - available_times:
+      type: string
+
+on-success:
+  execute:
+    language: python
+    code: process_tasks.py
+  response:
+    text: "The tasks have been distributed according to your available time and the available people. Here they are: {result}"
+    rephrase: simple

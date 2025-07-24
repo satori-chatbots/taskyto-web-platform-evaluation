@@ -1,0 +1,26 @@
+# -----> File: reservations.yaml <-----
+name: reservations
+kind: data_gathering
+description: |
+  This module allows users to make a reservation and stores it in a plain text file. Users can also inquire about their reservations.
+data:
+  - departure_city: string
+  - destination_city: string
+  - travel_date: date
+  - booking_reference: string
+
+on-success:
+  execute:
+    language: python
+    code: |
+      def main(departure_city, destination_city, travel_date, booking_reference):
+          # Append reservation to a text file
+          with open('reservations.txt', 'a') as file:
+              file.write(f"{booking_reference}: Flight from {departure_city} to {destination_city} on {travel_date}\n")
+          return f"Your reservation has been saved with reference number {booking_reference}."
+
+      return main(departure_city, destination_city, travel_date, booking_reference)
+
+  response:
+    text: "{result}"
+    rephrase: simple

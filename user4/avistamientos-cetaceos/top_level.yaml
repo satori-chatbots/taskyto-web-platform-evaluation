@@ -1,0 +1,14 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Este chatbot te ayudará a registrar avistamientos de cetáceos y a consultar los avistamientos registrados. Proporciona la información solicitada para completar el registro o selecciona la opción para ver los avistamientos.
+  fallback: Lo siento, no entendí lo que dijiste. ¿Puedes reformularlo?
+
+  items:
+  - title: Registrar avistamiento de cetáceos
+    kind: module
+    reference: registro_avistamiento
+  - title: Consultar avistamientos registrados
+    kind: module
+    reference: consultar_avistamientos

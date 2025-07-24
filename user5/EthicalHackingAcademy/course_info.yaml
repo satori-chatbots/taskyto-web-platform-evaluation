@@ -1,0 +1,12 @@
+# -----> File: course_info.yaml <-----
+modules:
+- name: course_info
+  kind: question_answering
+  description: Provides information about the courses offered at the Hacking Academy.
+  questions:
+  - question: What courses do you offer?
+    answer: We offer courses in Ethical Hacking, Penetration Testing, Cybersecurity Fundamentals, and more.
+  - question: How long are the courses?
+    answer: Courses typically last between 4 to 12 weeks, depending on the subject.
+  - question: Are there any prerequisites?
+    answer: Basic knowledge of computers and networking is recommended but not mandatory.

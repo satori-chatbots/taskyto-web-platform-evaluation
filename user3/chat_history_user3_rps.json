@@ -1,0 +1,110 @@
+[
+    {
+        "type": "human",
+        "data": {
+            "content": "Make a chatbot to play rock paper scissors. It will be a best of 3 match, with intermediate results saved to a JSON with structure {player: 0, assistant: 0}. When reaching the end of the game (someone wins), reset the json to 0 points each.\n\nThe options should accept rock, paper or scissors",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": null,
+            "example": false
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "Here is the Taskyto YAML content for a chatbot that plays rock-paper-scissors in a best of 3 match, saving intermediate results to a JSON structure. The game resets the scores when someone wins.\n\n# -----> File: top_level.yaml <-----\nmodules:\n- name: top-level\n  kind: menu\n  presentation: |\n    Welcome to the Rock-Paper-Scissors game! You will play against the assistant in a best of 3 match.\n  fallback: I'm sorry, I did not get what you said. Can you rephrase?\n\n  items:\n  - title: Start Game\n    kind: module\n    reference: start_game\n  - title: Game Rules\n    kind: module\n    reference: game_rules\n  - title: Exit\n    kind: answer\n    answer: Thank you for playing!\n\n# -----> File: start_game.yaml <-----\nname: start_game\nkind: sequence\nmemory: full\nreferences:\n  - initialize_game\n  - play_round\n  - check_winner\n\n# -----> File: initialize_game.yaml <-----\nname: initialize_game\nkind: action\ndata: []\non-success:\n  response:\n    text: \"The game has started! Let's play Rock-Paper-Scissors.\"\n    rephrase: simple\n\n# -----> File: play_round.yaml <-----\nname: play_round\nkind: data_gathering\ndescription: |\n  In this step, the user will choose rock, paper, or scissors. The assistant will also make a choice.\ndata:\n  - user_choice:\n      type: enum\n      values:\n        - rock\n        - paper\n        - scissors\n\non-success:\n  execute:\n    language: python\n    code: |\n      import random\n      choices = ['rock', 'paper', 'scissors']\n      assistant_choice = random.choice(choices)\n      user_choice = data['user_choice']\n      \n      if user_choice == assistant_choice:\n          result = \"It's a tie!\"\n      elif (user_choice == 'rock' and assistant_choice == 'scissors') or \\\n           (user_choice == 'paper' and assistant_choice == 'rock') or \\\n           (user_choice == 'scissors' and assistant_choice == 'paper'):\n          result = \"You win this round!\"\n      else:\n          result = \"The assistant wins this round!\"\n      \n      return result\n\n  response:\n    text: \"You chose {user_choice}. The assistant chose {assistant_choice}. {result}\"\n    rephrase: simple\n\n# -----> File: check_winner.yaml <-----\nname: check_winner\nkind: action\ndata: []\non-success:\n  execute:\n    language: python\n    code: |\n      import json\n      \n      # Load the current scores\n      with open('scores.json', 'r') as f:\n          scores = json.load(f)\n      \n      # Update scores based on the result from the previous round\n      if result == \"You win this round!\":\n          scores['player'] += 1\n      elif result == \"The assistant wins this round!\":\n          scores['assistant'] += 1\n      \n      # Check if someone has won the best of 3\n      if scores['player'] == 2:\n          final_result = \"Congratulations! You won the game!\"\n          scores = {'player': 0, 'assistant': 0}  # Reset scores\n      elif scores['assistant'] == 2:\n          final_result = \"The assistant wins the game! Better luck next time.\"\n          scores = {'player': 0, 'assistant': 0}  # Reset scores\n      else:\n          final_result = \"The game continues!\"\n      \n      # Save updated scores\n      with open('scores.json', 'w') as f:\n          json.dump(scores, f)\n      \n      return final_result\n\n  response:\n    text: \"{final_result}\"\n    rephrase: simple\n\n# -----> File: game_rules.yaml <-----\nname: game_rules\nkind: question_answering\ndescription: Rules of the Rock-Paper-Scissors game.\nquestions:\n- question: What are the rules of the game?\n  answer: |\n    You will play against the assistant in a best of 3 match. Choose rock, paper, or scissors. \n    Rock beats scissors, scissors beats paper, and paper beats rock. The first to win 2 rounds wins the game.\n```",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": null,
+            "example": false,
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+            "content": "Make a chatbot to play rock paper scissors. It will be a best of 3 match, with intermediate results saved to a JSON with structure {player: 0, assistant: 0}. When reaching the end of the game (someone wins), reset the json to 0 points each. The options should accept rock, paper or scissors",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": null,
+            "example": false
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "Here is the complete Taskyto YAML content for a chatbot that plays Rock-Paper-Scissors in a best of 3 match, saving intermediate results to a JSON structure. The game resets the scores when someone wins.\n\n```yaml\n# -----> File: top_level.yaml <-----\nmodules:\n- name: top-level\n  kind: menu\n  presentation: |\n    Welcome to the Rock-Paper-Scissors game! You will play against the assistant in a best of 3 match.\n  fallback: I'm sorry, I did not get what you said. Can you rephrase?\n\n  items:\n  - title: Start Game\n    kind: module\n    reference: start_game\n  - title: Game Rules\n    kind: module\n    reference: game_rules\n  - title: Exit\n    kind: answer\n    answer: Thank you for playing!\n\n# -----> File: start_game.yaml <-----\nname: start_game\nkind: sequence\nmemory: full\nreferences:\n  - initialize_game\n  - play_round\n  - check_winner\n\n# -----> File: initialize_game.yaml <-----\nname: initialize_game\nkind: action\ndata: []\non-success:\n  response:\n    text: \"The game has started! Let's play Rock-Paper-Scissors.\"\n    rephrase: simple\n\n# -----> File: play_round.yaml <-----\nname: play_round\nkind: data_gathering\ndescription: |\n  In this step, the user will choose rock, paper, or scissors. The assistant will also make a choice.\ndata:\n  - user_choice:\n      type: enum\n      values:\n        - rock\n        - paper\n        - scissors\n\non-success:\n  execute:\n    language: python\n    code: |\n      import random\n      choices = ['rock', 'paper', 'scissors']\n      assistant_choice = random.choice(choices)\n      user_choice = data['user_choice']\n      \n      if user_choice == assistant_choice:\n          result = \"It's a tie!\"\n      elif (user_choice == 'rock' and assistant_choice == 'scissors') or \\\n           (user_choice == 'paper' and assistant_choice == 'rock') or \\\n           (user_choice == 'scissors' and assistant_choice == 'paper'):\n          result = \"You win this round!\"\n      else:\n          result = \"The assistant wins this round!\"\n      \n      return {\"result\": result, \"assistant_choice\": assistant_choice}\n\n  response:\n    text: \"You chose {user_choice}. The assistant chose {assistant_choice}. {result}\"\n    rephrase: simple\n\n# -----> File: check_winner.yaml <-----\nname: check_winner\nkind: action\ndata: []\non-success:\n  execute:\n    language: python\n    code: |\n      import json\n      \n      # Load the current scores\n      with open('scores.json', 'r') as f:\n          scores = json.load(f)\n      \n      # Update scores based on the result from the previous round\n      if result == \"You win this round!\":\n          scores['player'] += 1\n      elif result == \"The assistant wins this round!\":\n          scores['assistant'] += 1\n      \n      # Check if someone has won the best of 3\n      if scores['player'] == 2:\n          final_result = \"Congratulations! You won the game!\"\n          scores = {'player': 0, 'assistant': 0}  # Reset scores\n      elif scores['assistant'] == 2:\n          final_result = \"The assistant wins the game! Better luck next time.\"\n          scores = {'player': 0, 'assistant': 0}  # Reset scores\n      else:\n          final_result = \"The game continues!\"\n      \n      # Save updated scores\n      with open('scores.json', 'w') as f:\n          json.dump(scores, f)\n      \n      return final_result\n\n  response:\n    text: \"{final_result}\"\n    rephrase: simple\n\n# -----> File: game_rules.yaml <-----\nname: game_rules\nkind: question_answering\ndescription: Rules of the Rock-Paper-Scissors game.\nquestions:\n- question: What are the rules of the game?\n  answer: |\n    You will play against the assistant in a best of 3 match. Choose rock, paper, or scissors. \n    Rock beats scissors, scissors beats paper, and paper beats rock. The first to win 2 rounds wins the game.\n```\n\nThis YAML content defines the structure and behavior of the Rock-Paper-Scissors chatbot, including the game rules, initialization, round play, and winner checking. You can copy and paste this code into your Taskyto project.",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": null,
+            "example": false,
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+            "content": "Separate each module in different code blocks",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": null,
+            "example": false
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "Here is the Taskyto YAML content for the Rock-Paper-Scissors chatbot, separated into different code blocks for each module as you requested.\n\n```yaml\n# -----> File: top_level.yaml <-----\nmodules:\n- name: top-level\n  kind: menu\n  presentation: |\n    Welcome to the Rock-Paper-Scissors game! You will play against the assistant in a best of 3 match.\n  fallback: I'm sorry, I did not get what you said. Can you rephrase?\n\n  items:\n  - title: Start Game\n    kind: module\n    reference: start_game\n  - title: Game Rules\n    kind: module\n    reference: game_rules\n  - title: Exit\n    kind: answer\n    answer: Thank you for playing!\n```\n\n```yaml\n# -----> File: start_game.yaml <-----\nname: start_game\nkind: sequence\nmemory: full\nreferences:\n  - initialize_game\n  - play_round\n  - check_winner\n```\n\n```yaml\n# -----> File: initialize_game.yaml <-----\nname: initialize_game\nkind: action\ndata: []\non-success:\n  response:\n    text: \"The game has started! Let's play Rock-Paper-Scissors.\"\n    rephrase: simple\n```\n\n```yaml\n# -----> File: play_round.yaml <-----\nname: play_round\nkind: data_gathering\ndescription: |\n  In this step, the user will choose rock, paper, or scissors. The assistant will also make a choice.\ndata:\n  - user_choice:\n      type: enum\n      values:\n        - rock\n        - paper\n        - scissors\n\non-success:\n  execute:\n    language: python\n    code: |\n      import random\n      choices = ['rock', 'paper', 'scissors']\n      assistant_choice = random.choice(choices)\n      user_choice = data['user_choice']\n      \n      if user_choice == assistant_choice:\n          result = \"It's a tie!\"\n      elif (user_choice == 'rock' and assistant_choice == 'scissors') or \\\n           (user_choice == 'paper' and assistant_choice == 'rock') or \\\n           (user_choice == 'scissors' and assistant_choice == 'paper'):\n          result = \"You win this round!\"\n      else:\n          result = \"The assistant wins this round!\"\n      \n      return {\"result\": result, \"assistant_choice\": assistant_choice}\n\n  response:\n    text: \"You chose {user_choice}. The assistant chose {assistant_choice}. {result}\"\n    rephrase: simple\n```\n\n```yaml\n# -----> File: check_winner.yaml <-----\nname: check_winner\nkind: action\ndata: []\non-success:\n  execute:\n    language: python\n    code: |\n      import json\n      \n      # Load the current scores\n      with open('scores.json', 'r') as f:\n          scores = json.load(f)\n      \n      # Update scores based on the result from the previous round\n      if result == \"You win this round!\":\n          scores['player'] += 1\n      elif result == \"The assistant wins this round!\":\n          scores['assistant'] += 1\n      \n      # Check if someone has won the best of 3\n      if scores['player'] == 2:\n          final_result = \"Congratulations! You won the game!\"\n          scores = {'player': 0, 'assistant': 0}  # Reset scores\n      elif scores['assistant'] == 2:\n          final_result = \"The assistant wins the game! Better luck next time.\"\n          scores = {'player': 0, 'assistant': 0}  # Reset scores\n      else:\n          final_result = \"The game continues!\"\n      \n      # Save updated scores\n      with open('scores.json', 'w') as f:\n          json.dump(scores, f)\n      \n      return final_result\n\n  response:\n    text: \"{final_result}\"\n    rephrase: simple\n```\n\n```yaml\n# -----> File: game_rules.yaml <-----\nname: game_rules\nkind: question_answering\ndescription: Rules of the Rock-Paper-Scissors game.\nquestions:\n- question: What are the rules of the game?\n  answer: |\n    You will play against the assistant in a best of 3 match. Choose rock, paper, or scissors. \n    Rock beats scissors, scissors beats paper, and paper beats rock. The first to win 2 rounds wins the game.\n```\n\nYou can copy and paste each code block into your Taskyto project as needed. Let me know if you need any further assistance!",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": null,
+            "example": false,
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+            "content": "You can't create sequence modules in another file, it must be in top_level as an item",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": null,
+            "example": false
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "Here is the corrected Taskyto YAML content for the Rock-Paper-Scissors chatbot, ensuring that all sequence modules are included in the top-level file as items, as per your request.\n\n```yaml\n# -----> File: top_level.yaml <-----\nmodules:\n- name: top-level\n  kind: menu\n  presentation: |\n    Welcome to the Rock-Paper-Scissors game! You will play against the assistant in a best of 3 match.\n  fallback: I'm sorry, I did not get what you said. Can you rephrase?\n\n  items:\n  - title: Start Game\n    kind: sequence\n    memory: full\n    references:\n      - initialize_game\n      - play_round\n      - check_winner\n  - title: Game Rules\n    kind: module\n    reference: game_rules\n  - title: Exit\n    kind: answer\n    answer: Thank you for playing!\n```\n\n```yaml\n# -----> File: initialize_game.yaml <-----\nname: initialize_game\nkind: action\ndata: []\non-success:\n  response:\n    text: \"The game has started! Let's play Rock-Paper-Scissors.\"\n    rephrase: simple\n```\n\n```yaml\n# -----> File: play_round.yaml <-----\nname: play_round\nkind: data_gathering\ndescription: |\n  In this step, the user will choose rock, paper, or scissors. The assistant will also make a choice.\ndata:\n  - user_choice:\n      type: enum\n      values:\n        - rock\n        - paper\n        - scissors\n\non-success:\n  execute:\n    language: python\n    code: |\n      import random\n      choices = ['rock', 'paper', 'scissors']\n      assistant_choice = random.choice(choices)\n      user_choice = data['user_choice']\n      \n      if user_choice == assistant_choice:\n          result = \"It's a tie!\"\n      elif (user_choice == 'rock' and assistant_choice == 'scissors') or \\\n           (user_choice == 'paper' and assistant_choice == 'rock') or \\\n           (user_choice == 'scissors' and assistant_choice == 'paper'):\n          result = \"You win this round!\"\n      else:\n          result = \"The assistant wins this round!\"\n      \n      return {\"result\": result, \"assistant_choice\": assistant_choice}\n\n  response:\n    text: \"You chose {user_choice}. The assistant chose {assistant_choice}. {result}\"\n    rephrase: simple\n```\n\n```yaml\n# -----> File: check_winner.yaml <-----\nname: check_winner\nkind: action\ndata: []\non-success:\n  execute:\n    language: python\n    code: |\n      import json\n      \n      # Load the current scores\n      with open('scores.json', 'r') as f:\n          scores = json.load(f)\n      \n      # Update scores based on the result from the previous round\n      if result == \"You win this round!\":\n          scores['player'] += 1\n      elif result == \"The assistant wins this round!\":\n          scores['assistant'] += 1\n      \n      # Check if someone has won the best of 3\n      if scores['player'] == 2:\n          final_result = \"Congratulations! You won the game!\"\n          scores = {'player': 0, 'assistant': 0}  # Reset scores\n      elif scores['assistant'] == 2:\n          final_result = \"The assistant wins the game! Better luck next time.\"\n          scores = {'player': 0, 'assistant': 0}  # Reset scores\n      else:\n          final_result = \"The game continues!\"\n      \n      # Save updated scores\n      with open('scores.json', 'w') as f:\n          json.dump(scores, f)\n      \n      return final_result\n\n  response:\n    text: \"{final_result}\"\n    rephrase: simple\n```\n\n```yaml\n# -----> File: game_rules.yaml <-----\nname: game_rules\nkind: question_answering\ndescription: Rules of the Rock-Paper-Scissors game.\nquestions:\n- question: What are the rules of the game?\n  answer: |\n    You will play against the assistant in a best of 3 match. Choose rock, paper, or scissors. \n    Rock beats scissors, scissors beats paper, and paper beats rock. The first to win 2 rounds wins the game.\n```\n\nYou can copy and paste each code block into your Taskyto project as needed. Let me know if you need any further assistance!\n```",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": null,
+            "example": false,
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+        }
+    }
+]

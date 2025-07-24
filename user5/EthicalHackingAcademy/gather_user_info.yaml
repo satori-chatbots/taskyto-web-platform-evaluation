@@ -1,0 +1,20 @@
+# -----> File: gather_user_info.yaml <-----
+modules:
+- name: gather_user_info
+  kind: data_gathering
+  description: This module gathers user information for enrollment in the academy.
+  data:
+    - name: Full Name
+    - email:
+        type: email
+        required: true
+    - phone_number:
+        type: Phone number
+        examples:
+          - 555-123456
+          - +34 555 12 34 56
+
+  on-success:
+    response:
+      text: "Thank you, {name}! We will contact you at {email} or {phone_number} for the enrollment process."
+      rephrase: simple

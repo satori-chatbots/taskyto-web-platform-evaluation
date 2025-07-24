@@ -1,0 +1,23 @@
+# -----> File: add_task.yaml <-----
+name: add_task
+kind: data_gathering
+description: |
+  This module allows the user to add a task to their note.
+data:
+  - task:
+      type: string
+      required: true
+
+on-success:
+  execute:
+    language: python
+    code: |
+      # Append the task to the tasks.txt file
+      with open('tasks.txt', 'a') as f:
+          f.write(f"{task}\n")
+      
+      return f"Task '{task}' has been added."
+
+  response:
+    text: "{result}"
+    rephrase: simple

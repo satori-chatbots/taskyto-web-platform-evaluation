@@ -1,0 +1,14 @@
+# -----> File: gather_time.yaml <-----
+name: gather_time
+kind: data_gathering
+description: |
+  Please let me know how much time you have available to perform household tasks. This information is necessary to distribute the tasks appropriately.
+data:
+  - available_time:
+      type: number
+      required: true
+
+on-success:
+  response:
+    text: "Thank you, you have {available_time} hours available."
+    rephrase: simple

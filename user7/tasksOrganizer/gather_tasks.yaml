@@ -1,0 +1,14 @@
+# -----> File: gather_tasks.yaml <-----
+name: gather_tasks
+kind: data_gathering
+description: |
+  Please let me know the pending tasks you need to complete. You can list multiple tasks.
+data:
+  - tasks:
+      type: string
+      required: true
+
+on-success:
+  response:
+    text: "I have received your pending tasks: {tasks}. Now I will proceed to distribute them."
+    rephrase: simple

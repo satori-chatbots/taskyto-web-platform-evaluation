@@ -1,0 +1,11 @@
+# -----> File: flight_info.yaml <-----
+name: flight_info
+kind: question_answering
+description: Useful for answering questions about flights.
+questions:
+- question: What are the available flights?
+  answer: We have various flights available depending on your destination and travel date.
+- question: How can I change my booking?
+  answer: You can change your booking by contacting our customer service or through the website.
+- question: What is the baggage policy?
+  answer: Each passenger is allowed one carry-on bag and one checked bag. Additional fees may apply for extra baggage.

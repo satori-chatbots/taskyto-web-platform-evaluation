@@ -1,0 +1,164 @@
+[
+    {
+        "type": "human",
+        "data": {
+            "content": "How can I start configuring my chatbot?",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": null,
+            "example": false
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "To start configuring your Taskyto chatbot, you'll want to follow these steps:\n\n1. **Define Your Chatbot's Purpose**: Determine what you want your chatbot to do. This could be answering FAQs, taking orders, or providing information.\n\n2. **Create the YAML Files**: You'll need to create YAML files that define the modules of your chatbot. Each module can be a menu, action, data gathering, question answering, or sequence module.\n\n3. **Structure Your YAML**: Ensure that your YAML files are structured correctly. Each module should have the necessary fields defined according to the Taskyto syntax.\n\n4. **Example YAML Structure**: Here\u2019s a simple example of a top-level menu module to get you started:\n\n```yaml\n# -----> File: top_level.yaml <-----\nmodules:\n- name: top-level\n  kind: menu\n  presentation: |\n    Welcome to the chatbot! How can I assist you today?\n  fallback: I'm sorry, I didn't understand that. Can you please rephrase?\n  items:\n  - title: Ask a question\n    kind: module\n    reference: question_answering_module\n  - title: Get help\n    kind: answer\n    answer: |\n      You can ask me anything about our services!\n```\n\n5. **Add More Modules**: Depending on your chatbot's functionality, you may want to add more modules for actions, data gathering, or question answering.\n\n6. **Test Your Chatbot**: Once you have your YAML files set up, test your chatbot to ensure it responds as expected.\n\nIf you need help with specific modules or further details, feel free to ask!\n```",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": null,
+            "example": false,
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+            "content": "create a chatbot for a car dealer and add some functions to it, such as show car prices, car features, or car comparisson. add only expenssive cars (bugatti, ferrari, pagani, mclaren, koenigseg...) ",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": null,
+            "example": false
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "To create a Taskyto chatbot for a car dealer that showcases expensive cars like Bugatti, Ferrari, Pagani, McLaren, and Koenigsegg, we will define several modules. These modules will include a top-level menu, data gathering for car features, prices, and comparisons. Below is the YAML content for the chatbot.\n\n# -----> File: top_level.yaml <-----\nmodules:\n- name: top-level\n  kind: menu\n  presentation: |\n    Welcome to the Luxury Car Dealer Chatbot! How can I assist you today?\n  fallback: I'm sorry, I didn't understand that. Can you please rephrase?\n  items:\n  - title: Show Car Prices\n    kind: module\n    reference: car_prices\n  - title: Show Car Features\n    kind: module\n    reference: car_features\n  - title: Compare Cars\n    kind: module\n    reference: car_comparison\n  - title: Welcome Message\n    kind: answer\n    answer: |\n      Welcome to our luxury car dealership! I can help you with prices, features, and comparisons of our high-end cars.\n\n# -----> File: car_prices.yaml <-----\nname: car_prices\nkind: question_answering\ndescription: Provides the prices of luxury cars.\nquestions:\n- question: What is the price of a Bugatti?\n  answer: The price of a Bugatti starts at $2.5 million.\n- question: What is the price of a Ferrari?\n  answer: The price of a Ferrari starts at $215,000.\n- question: What is the price of a Pagani?\n  answer: The price of a Pagani starts at $2.6 million.\n- question: What is the price of a McLaren?\n  answer: The price of a McLaren starts at $210,000.\n- question: What is the price of a Koenigsegg?\n  answer: The price of a Koenigsegg starts at $3 million.\n\n# -----> File: car_features.yaml <-----\nname: car_features\nkind: question_answering\ndescription: Provides features of luxury cars.\nquestions:\n- question: What are the features of a Bugatti?\n  answer: Bugatti features include a quad-turbocharged W16 engine, all-wheel drive, and a top speed of over 300 mph.\n- question: What are the features of a Ferrari?\n  answer: Ferrari features include a V8 engine, advanced aerodynamics, and a luxurious interior.\n- question: What are the features of a Pagani?\n  answer: Pagani features include a lightweight carbon-titanium structure, AMG V12 engine, and bespoke interior design.\n- question: What are the features of a McLaren?\n  answer: McLaren features include a lightweight chassis, twin-turbo V8 engine, and cutting-edge technology.\n- question: What are the features of a Koenigsegg?\n  answer: Koenigsegg features include a lightweight carbon fiber body, advanced aerodynamics, and a powerful V8 engine.\n\n# -----> File: car_comparison.yaml <-----\nname: car_comparison\nkind: data_gathering\ndescription: Gathers information to compare two luxury cars.\ndata:\n  - car1:\n      type: enum\n      values:\n        - Bugatti\n        - Ferrari\n        - Pagani\n        - McLaren\n        - Koenigsegg\n  - car2:\n      type: enum\n      values:\n        - Bugatti\n        - Ferrari\n        - Pagani\n        - McLaren\n        - Koenigsegg\n\non-success:\n  response:\n    text: \"You have chosen to compare {car1} and {car2}. Please wait while I gather the comparison details.\"\n    rephrase: simple\n```",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": null,
+            "example": false,
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+            "content": "make it yaml style",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": null,
+            "example": false
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "To create a Taskyto chatbot for a luxury car dealer that showcases expensive cars like Bugatti, Ferrari, Pagani, McLaren, and Koenigsegg, I will provide you with the complete YAML content for the chatbot. This will include a top-level menu, question answering modules for car prices and features, and a data gathering module for car comparisons. Below is the YAML content structured according to Taskyto syntax.\n\n```yaml\n# -----> File: top_level.yaml <-----\nmodules:\n- name: top-level\n  kind: menu\n  presentation: |\n    Welcome to the Luxury Car Dealer Chatbot! How can I assist you today?\n  fallback: I'm sorry, I didn't understand that. Can you please rephrase?\n  items:\n  - title: Show Car Prices\n    kind: module\n    reference: car_prices\n  - title: Show Car Features\n    kind: module\n    reference: car_features\n  - title: Compare Cars\n    kind: module\n    reference: car_comparison\n  - title: Welcome Message\n    kind: answer\n    answer: |\n      Welcome to our luxury car dealership! I can help you with prices, features, and comparisons of our high-end cars.\n```\n\n```yaml\n# -----> File: car_prices.yaml <-----\nname: car_prices\nkind: question_answering\ndescription: Provides the prices of luxury cars.\nquestions:\n- question: What is the price of a Bugatti?\n  answer: The price of a Bugatti starts at $2.5 million.\n- question: What is the price of a Ferrari?\n  answer: The price of a Ferrari starts at $215,000.\n- question: What is the price of a Pagani?\n  answer: The price of a Pagani starts at $2.6 million.\n- question: What is the price of a McLaren?\n  answer: The price of a McLaren starts at $210,000.\n- question: What is the price of a Koenigsegg?\n  answer: The price of a Koenigsegg starts at $3 million.\n```\n\n```yaml\n# -----> File: car_features.yaml <-----\nname: car_features\nkind: question_answering\ndescription: Provides features of luxury cars.\nquestions:\n- question: What are the features of a Bugatti?\n  answer: Bugatti features include a quad-turbocharged W16 engine, all-wheel drive, and a top speed of over 300 mph.\n- question: What are the features of a Ferrari?\n  answer: Ferrari features include a V8 engine, advanced aerodynamics, and a luxurious interior.\n- question: What are the features of a Pagani?\n  answer: Pagani features include a lightweight carbon-titanium structure, AMG V12 engine, and bespoke interior design.\n- question: What are the features of a McLaren?\n  answer: McLaren features include a lightweight chassis, twin-turbo V8 engine, and cutting-edge technology.\n- question: What are the features of a Koenigsegg?\n  answer: Koenigsegg features include a lightweight carbon fiber body, advanced aerodynamics, and a powerful V8 engine.\n```\n\n```yaml\n# -----> File: car_comparison.yaml <-----\nname: car_comparison\nkind: data_gathering\ndescription: Gathers information to compare two luxury cars.\ndata:\n  - car1:\n      type: enum\n      values:\n        - Bugatti\n        - Ferrari\n        - Pagani\n        - McLaren\n        - Koenigsegg\n  - car2:\n      type: enum\n      values:\n        - Bugatti\n        - Ferrari\n        - Pagani\n        - McLaren\n        - Koenigsegg\n\non-success:\n  response:\n    text: \"You have chosen to compare {car1} and {car2}. Please wait while I gather the comparison details.\"\n    rephrase: simple\n```\n\nYou can copy and paste each of these YAML fragments into your Taskyto project to set up your luxury car dealer chatbot. If you need further assistance or additional modules, feel free to ask!",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": null,
+            "example": false,
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+            "content": "make a python function to compare car prices and features with the cars choosen in the file \"car_comparison.yaml\"",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": null,
+            "example": false
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "To create a Python function that compares car prices and features based on the cars chosen in the \"car_comparison.yaml\" file, we will define a new action module in the YAML file. This module will execute a Python script that performs the comparison. Below is the YAML content for the action module and the corresponding Python function.\n\n```yaml\n# -----> File: compare_cars.yaml <-----\nname: compare_cars\nkind: action\ndata:\n  - car1:\n      type: enum\n      values:\n        - Bugatti\n        - Ferrari\n        - Pagani\n        - McLaren\n        - Koenigsegg\n  - car2:\n      type: enum\n      values:\n        - Bugatti\n        - Ferrari\n        - Pagani\n        - McLaren\n        - Koenigsegg\n\non-success:\n  execute:\n    language: python\n    code: compare_cars.py\n  response:\n    text: \"Comparison results for {car1} and {car2}: {result}\"\n    rephrase: simple\n```\n\n```python\n# -----> File: compare_cars.py <-----\ndef main(car1, car2):\n    # Define car features and prices\n    cars = {\n        \"Bugatti\": {\"price\": 2500000, \"features\": \"Quad-turbocharged W16 engine, all-wheel drive, top speed over 300 mph\"},\n        \"Ferrari\": {\"price\": 215000, \"features\": \"V8 engine, advanced aerodynamics, luxurious interior\"},\n        \"Pagani\": {\"price\": 2600000, \"features\": \"Lightweight carbon-titanium structure, AMG V12 engine\"},\n        \"McLaren\": {\"price\": 210000, \"features\": \"Lightweight chassis, twin-turbo V8 engine\"},\n        \"Koenigsegg\": {\"price\": 3000000, \"features\": \"Lightweight carbon fiber body, advanced aerodynamics\"},\n    }\n\n    # Get the details of the selected cars\n    car1_details = cars[car1]\n    car2_details = cars[car2]\n\n    # Create comparison result\n    result = f\"{car1} - Price: ${car1_details['price']}, Features: {car1_details['features']}\\n\" \\\n             f\"{car2} - Price: ${car2_details['price']}, Features: {car2_details['features']}\"\n\n    return result\n```\n\nYou can copy and paste the YAML fragment into your Taskyto project to define the action module, and the Python script will perform the comparison of the selected cars. If you need further assistance or additional modules, feel free to ask!\n```",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": null,
+            "example": false,
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+            "content": "add a new functionality to show available cars",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": null,
+            "example": false
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "To add a new functionality to show available cars in your Taskyto chatbot for the luxury car dealer, we will create a new module that lists the available cars. This module will be a question answering module that provides information about the cars available for sale. Below is the YAML content for this new functionality.\n\n```yaml\n# -----> File: available_cars.yaml <-----\nname: available_cars\nkind: question_answering\ndescription: Provides a list of available luxury cars for sale.\nquestions:\n- question: What cars are available?\n  answer: |\n    We currently have the following luxury cars available for sale:\n    - Bugatti\n    - Ferrari\n    - Pagani\n    - McLaren\n    - Koenigsegg\n\non-success:\n  response:\n    text: \"Here are the available cars: {result}\"\n    rephrase: simple\n```\n\nYou can copy and paste this YAML fragment into your Taskyto project to define the new functionality for showing available cars. If you need further assistance or additional modules, feel free to ask!\n```",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": null,
+            "example": false,
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+            "content": "add it also to the top level file",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": null,
+            "example": false
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "To add the new functionality for showing available cars to the top-level file, we will include a reference to the `available_cars` module in the `top_level.yaml` file. Below is the updated YAML content for the top-level menu, including the new functionality.\n\n```yaml\n# -----> File: top_level.yaml <-----\nmodules:\n- name: top-level\n  kind: menu\n  presentation: |\n    Welcome to the Luxury Car Dealer Chatbot! How can I assist you today?\n  fallback: I'm sorry, I didn't understand that. Can you please rephrase?\n  items:\n  - title: Show Car Prices\n    kind: module\n    reference: car_prices\n  - title: Show Car Features\n    kind: module\n    reference: car_features\n  - title: Compare Cars\n    kind: module\n    reference: car_comparison\n  - title: Show Available Cars\n    kind: module\n    reference: available_cars\n  - title: Welcome Message\n    kind: answer\n    answer: |\n      Welcome to our luxury car dealership! I can help you with prices, features, and comparisons of our high-end cars.\n```\n\nYou can copy and paste this updated YAML fragment into your `top_level.yaml` file to include the new functionality for showing available cars. If you need further assistance or additional modules, feel free to ask!\n```",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": null,
+            "example": false,
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+        }
+    }
+]

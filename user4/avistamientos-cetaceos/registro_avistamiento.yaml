@@ -1,0 +1,27 @@
+name: registro_avistamiento
+kind: data_gathering
+description: |
+  Este módulo solicita el nombre común del cetáceo, las coordenadas del avistamiento y la forma en la que se avistó. 
+  Asegúrate de proporcionar toda la información requerida para completar el registro.
+data:
+  - nombre_comun:
+      type: string
+  - coordenadas:
+      type: string
+      examples:
+        - "34.0522, -118.2437" # Ejemplo de coordenadas
+  - forma_avistamiento:
+      type: enum
+      values:
+        - buceando
+        - barco de recreo
+        - ferry
+        - barco de avistamientos
+
+on-success:
+  execute:
+    language: python
+    code: save_sighting.py
+  response:
+    text: "Gracias por registrar el avistamiento de un {nombre_comun} en las coordenadas {coordenadas} avistado {forma_avistamiento}."
+    rephrase: simple

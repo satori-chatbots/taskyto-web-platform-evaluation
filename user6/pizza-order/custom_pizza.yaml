@@ -1,0 +1,29 @@
+# -----> File: custom_pizza.yaml <-----
+name: custom_pizza
+kind: data_gathering
+description: |
+  Please select the toppings for your custom pizza.
+data:
+  - toppings:
+      type: enum
+      values:
+        - cheese
+        - mushrooms
+        - pepper
+        - ham
+        - bacon
+        - pepperoni
+        - olives
+        - corn
+        - chicken
+  - pizza_size:
+      type: enum
+      values:
+        - Small
+        - Medium
+        - Large
+
+on-success:
+  response:
+    text: "Thank you for your order! You have ordered a custom pizza with {', '.join(toppings[:-1]) + ' and ' + toppings[-1] if len(toppings) > 1 else toppings[0]}."
+    rephrase: in-caller

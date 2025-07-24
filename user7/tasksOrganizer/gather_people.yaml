@@ -1,0 +1,17 @@
+# -----> File: gather_people.yaml <-----
+name: gather_people
+kind: data_gathering
+description: |
+  Please provide the names of the people available to help with the tasks and their available times. This information is necessary for effective task distribution.
+data:
+  - people:
+      type: string
+      required: true
+  - available_times:
+      type: string
+      required: true
+
+on-success:
+  response:
+    text: "I have received the available people: {people} with their times: {available_times}. Now I will proceed to distribute the tasks."
+    rephrase: simple
