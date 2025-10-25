@@ -1,0 +1,12 @@
+name: ice_cream_qa
+kind: question_answering
+description: Useful for answering questions about the ice cream shop.
+questions:
+- question: What flavors do you have?
+  answer: We offer vanilla, chocolate, strawberry, mint, and cookies & cream.
+- question: What are your opening hours?
+  answer: We are open every day from 10 AM to 10 PM.
+- question: Do you offer vegan options?
+  answer: Yes, we have vegan ice cream available in several flavors.
+- question: Can I order online?
+  answer: Currently, we only accept orders in-store.

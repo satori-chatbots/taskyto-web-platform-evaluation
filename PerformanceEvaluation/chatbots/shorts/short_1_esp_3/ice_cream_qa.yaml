@@ -1,0 +1,12 @@
+name: ice_cream_qa
+kind: question_answering
+description: This module answers common questions about the ice cream shop.
+questions:
+- question: What flavors do you have?
+  answer: We have vanilla, chocolate, strawberry, mint, and cookies & cream.
+- question: What are your opening hours?
+  answer: We are open every day from 10 AM to 10 PM.
+- question: Do you offer delivery?
+  answer: Yes, we offer delivery within a 5-mile radius.
+- question: Can I customize my ice cream?
+  answer: Absolutely! You can choose your flavor and toppings.

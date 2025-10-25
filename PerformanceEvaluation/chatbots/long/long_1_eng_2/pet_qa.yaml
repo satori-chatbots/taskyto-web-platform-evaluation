@@ -1,0 +1,10 @@
+name: pet_qa
+kind: question_answering
+description: Useful for answering questions about the pets available in the store.
+questions:
+- question: What types of pets do you have?
+  answer: We have dogs ($400), cats ($250), rabbits ($125), and hamsters ($100).
+- question: What are the prices of the pets?
+  answer: Dogs are $400, cats are $250, rabbits are $125, and hamsters are $100.
+- question: Can I order multiple pets?
+  answer: Yes, you can order different types and quantities of pets, with a maximum of 5 per type.

@@ -1,0 +1,20 @@
+name: manage_reservations
+kind: menu
+presentation: |
+  In this module, you can manage your reservations for picking up a purchased computer or bringing one in for repair.
+  Please choose an option below.
+fallback: I'm sorry, I did not get what you said. Can you rephrase?
+
+items:
+- title: Pickup Reservation
+  memory: full
+  kind: sequence
+  references:
+    - pickup_details
+    - calculate_total_price
+- title: Repair Reservation
+  memory: full
+  kind: sequence
+  references:
+    - repair_details
+    - confirm_repair

@@ -1,0 +1,29 @@
+[
+    {
+        "type": "human",
+        "data": {
+            "content": "Dise\u00f1a un chatbot para una central de reservas de hotel. El bot debe poder resolver preguntas frecuentes y gestionar reservas. Solo se atiende con personal humano entre las 9 y las 21 h, pero el chatbot puede funcionar las 24 h. Si el usuario quiere reservar, primero hay que pedir la fecha de entrada y salida, y luego el tipo de habitaci\u00f3n: est\u00e1ndar ($80/noche), doble ($120/noche), suite ($200/noche). Puede reservar varias habitaciones del mismo tipo (m\u00e1ximo 3 por tipo). Tambi\u00e9n debe poder consultar disponibilidad. El chatbot calcular\u00e1 autom\u00e1ticamente el total seg\u00fan las noches y habitaciones. Todo debe fluir, aunque el orden de preguntas puede variar si es m\u00e1s natural. No hace falta que el usuario lo diga todo de golpe. El foco es en que la experiencia sea sencilla y completa. Si solo tiene dudas, el bot debe responder sin forzar la reserva.",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": null,
+            "example": false
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "Based on your request for a hotel reservation chatbot, I will create the necessary Taskyto YAML files to handle frequently asked questions, manage reservations, and calculate totals based on room types and nights. The chatbot will also be able to check availability and provide a smooth user experience. Below are the YAML files for the top-level menu, question answering, data gathering for reservations, and actions for calculating totals.\n\n### Top-Level Menu YAML\n```yaml\n# -----> File: top_level.yaml <-----\nmodules:\n- name: top-level\n  kind: menu\n  presentation: |\n    Bienvenido a la central de reservas de hotel. Estoy aqu\u00ed para ayudarle con sus preguntas y gestionar sus reservas. \n    Puede hacer preguntas sobre disponibilidad, tipos de habitaciones y precios.\n  fallback: Lo siento, no entend\u00ed lo que dijiste. \u00bfPuedes reformularlo?\n\n  items:\n  - title: Preguntas Frecuentes\n    kind: module\n    reference: faq_module\n  - title: Hacer una Reserva\n    memory: full\n    kind: module\n    reference: reservation_module\n  - title: Consultar Disponibilidad\n    memory: full\n    kind: module\n    reference: availability_module\n```\n\n### Question Answering Module YAML\n```yaml\n# -----> File: faq_module.yaml <-----\nname: faq_module\nkind: question_answering\ndescription: M\u00f3dulo para responder preguntas frecuentes sobre el hotel.\nquestions:\n- question: \u00bfCu\u00e1les son los horarios de atenci\u00f3n?\n  answer: El personal humano est\u00e1 disponible de 9 a 21 h, pero el chatbot puede atenderle las 24 h.\n- question: \u00bfQu\u00e9 tipos de habitaciones ofrecen?\n  answer: Ofrecemos habitaciones est\u00e1ndar ($80/noche), dobles ($120/noche) y suites ($200/noche).\n- question: \u00bfC\u00f3mo puedo consultar la disponibilidad?\n  answer: Puede hacer una consulta de disponibilidad a trav\u00e9s del men\u00fa de reservas.\n```\n\n### Data Gathering Module for Reservations\n```yaml\n# -----> File: reservation_module.yaml <-----\nname: reservation_module\nkind: data_gathering\ndescription: |\n  Este m\u00f3dulo solicita la fecha de entrada y salida, as\u00ed como el tipo de habitaci\u00f3n que desea reservar. \n  Puede reservar varias habitaciones del mismo tipo (m\u00e1ximo 3 por tipo).\ndata:\n  - check_in_date: date\n  - check_out_date: date\n  - room_type:\n      type: enum\n      values:\n        - est\u00e1ndar\n        - doble\n        - suite\n  - number_of_rooms:\n      type: integer\n      required: false\n\non-success:\n  response:\n    text: \"Gracias por su reserva. Ha reservado {number_of_rooms} habitaci\u00f3n(es) de tipo {room_type} desde {check_in_date} hasta {check_out_date}.\"\n    rephrase: in-caller\n```\n\n### Data Gathering Module for Availability\n```yaml\n# -----> File: availability_module.yaml <-----\nname: availability_module\nkind: data_gathering\ndescription: |\n  Este m\u00f3dulo solicita la fecha de entrada y salida para verificar la disponibilidad de habitaciones.\ndata:\n  - check_in_date: date\n  - check_out_date: date\n\non-success:\n  response:\n    text: \"Verificando disponibilidad para las fechas {check_in_date} hasta {check_out_date}.\"\n    rephrase: simple\n```\n\n### Action Module for Calculating Total\n```yaml\n# -----> File: calculate_total.yaml <-----\nname: calculate_total\nkind: action\ndata:\n  - room_type:\n      type: enum\n      values:\n        - est\u00e1ndar\n        - doble\n        - suite\n  - number_of_rooms:\n      type: integer\n  - nights: \n      type: integer\n\non-success:\n  execute:\n    language: python\n    code: |\n      def main(room_type, number_of_rooms, nights):\n          prices = {\n              \"est\u00e1ndar\": 80,\n              \"doble\": 120,\n              \"suite\": 200\n          }\n          total = prices[room_type] * number_of_rooms * nights\n          return f\"El total por {nights} noche(s) en {number_of_rooms} habitaci\u00f3n(es) de tipo {room_type} es ${total}.\"\n\n      return main(room_type, number_of_rooms, nights)\n\n  response:\n    text: \"{result}\"\n    rephrase: simple\n```\n\nThese YAML files will provide a solid foundation for your hotel reservation chatbot, allowing it to handle inquiries and reservations effectively. You can further customize the modules as needed to enhance the user experience.",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": null,
+            "example": false,
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+        }
+    }
+]

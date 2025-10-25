@@ -1,0 +1,32 @@
+name: order_ice_cream
+kind: data_gathering
+description: |
+  This module gathers information about the ice cream order, including flavor and size.
+data:
+  - flavor:
+      type: enum
+      values:
+        - vanilla
+        - chocolate
+        - strawberry
+        - mint
+        - cookies & cream
+  - size:
+      type: enum
+      values:
+        - small
+        - medium
+        - large
+  - toppings:
+      type: enum
+      values:
+        - sprinkles
+        - chocolate chips
+        - nuts
+        - whipped cream
+        - fruit
+
+on-success:
+  response:
+    text: "Thank you for your order! You have chosen a {size} {flavor} ice cream with {', '.join(toppings[:-1]) + ' and ' + toppings[-1] if len(toppings) > 1 else toppings[0]}."
+    rephrase: in-caller

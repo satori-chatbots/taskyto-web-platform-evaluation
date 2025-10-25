@@ -1,0 +1,19 @@
+name: reservation_flow
+kind: menu
+presentation: |
+  Please choose whether you want to reserve for pickup or repair.
+fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+items:
+- title: Reserve for Pickup
+  memory: full
+  kind: sequence
+  references:
+    - pickup_details
+    - calculate_total
+- title: Reserve for Repair
+  memory: full
+  kind: sequence
+  references:
+    - repair_details
+    - calculate_total

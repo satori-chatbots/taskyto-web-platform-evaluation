@@ -1,0 +1,19 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to the Pet Store Chatbot! I can help you with your inquiries about pets and assist you in ordering them.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: Pet Q&A
+    kind: module
+    reference: pet_qa
+  - title: Order Pets
+    memory: full
+    kind: module
+    reference: order_pets
+  - title: Welcome Message
+    kind: answer
+    answer: |
+      Hello! I'm here to assist you with any questions about our pets and help you place an order.

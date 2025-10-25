@@ -1,0 +1,18 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to our pizza ordering chatbot! Here, you can ask questions about our menu, get answers to your queries, and place your pizza orders.
+  fallback: I'm sorry, I did not get what you said. Can you rephrase?
+
+  items:
+  - title: Pizza Q&A
+    kind: module
+    reference: pizza_qa
+  - title: Order a pizza
+    kind: module
+    reference: order_pizza
+  - title: Welcome message
+    kind: answer
+    answer: |
+      Hello! I'm here to assist you with your pizza orders and any questions you may have. What would you like to do today?

@@ -1,0 +1,16 @@
+name: gather_room_type
+kind: data_gathering
+description: |
+  Please select the type of room you would like to reserve.
+data:
+  - room_type:
+      type: enum
+      values:
+        - single
+        - double
+        - suite
+
+on-success:
+  response:
+    text: "You have chosen a {room_type} room."
+    rephrase: in-caller

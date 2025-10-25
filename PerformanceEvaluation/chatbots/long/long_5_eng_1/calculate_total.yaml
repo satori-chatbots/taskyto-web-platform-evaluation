@@ -1,0 +1,36 @@
+name: calculate_total
+kind: action
+data:
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - standard
+        - double
+        - suite
+  - number_of_rooms: integer
+
+on-success:
+  execute:
+    language: python
+    code: |
+      from datetime import datetime
+      
+      def main(check_in_date, check_out_date, room_type, number_of_rooms):
+          check_in = datetime.strptime(check_in_date, '%Y-%m-%d')
+          check_out = datetime.strptime(check_out_date, '%Y-%m-%d')
+          nights = (check_out - check_in).days
+          
+          prices = {
+              'standard': 80,
+              'double': 120,
+              'suite': 200
+          }
+          
+          total = nights * prices[room_type] * number_of_rooms
+          return f"The total cost for {number_of_rooms} {room_type} room(s) for {nights} night(s) is ${total}."
+      
+  response:
+    text: "{result}"
+    rephrase: simple

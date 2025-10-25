@@ -1,0 +1,10 @@
+name: faq_module
+kind: question_answering
+description: Módulo para responder preguntas frecuentes sobre el hotel.
+questions:
+- question: ¿Cuáles son los horarios de atención?
+  answer: El personal humano está disponible de 9 a 21 h, pero el chatbot puede atenderle las 24 h.
+- question: ¿Qué tipos de habitaciones ofrecen?
+  answer: Ofrecemos habitaciones estándar ($80/noche), dobles ($120/noche) y suites ($200/noche).
+- question: ¿Cómo puedo consultar la disponibilidad?
+  answer: Puede hacer una consulta de disponibilidad a través del menú de reservas.

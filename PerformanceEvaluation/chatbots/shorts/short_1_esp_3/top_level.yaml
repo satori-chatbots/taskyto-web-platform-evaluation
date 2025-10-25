@@ -1,0 +1,19 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to the Ice Cream Shop! I'm here to help you with your ice cream orders and answer any questions you may have.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: Ice Cream Q&A
+    kind: module
+    reference: ice_cream_qa
+  - title: Order Ice Cream
+    memory: full
+    kind: module
+    reference: order_ice_cream
+  - title: Welcome Message
+    kind: answer
+    answer: |
+      Hello! I'm your assistant for ordering delicious ice cream. What can I help you with today?

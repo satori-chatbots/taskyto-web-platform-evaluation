@@ -1,0 +1,23 @@
+name: select_pets
+kind: data_gathering
+description: |
+  Please select the types and quantities of pets you would like to adopt. 
+  You can choose a maximum of 5 pets in total.
+data:
+  - dogs:
+      type: integer
+      required: false
+  - cats:
+      type: integer
+      required: false
+  - rabbits:
+      type: integer
+      required: false
+  - hamsters:
+      type: integer
+      required: false
+
+on-success:
+  response:
+    text: "You have selected {dogs} dogs, {cats} cats, {rabbits} rabbits, and {hamsters} hamsters."
+    rephrase: simple

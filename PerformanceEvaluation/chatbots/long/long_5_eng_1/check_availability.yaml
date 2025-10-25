@@ -1,0 +1,7 @@
+name: check_availability
+kind: action
+data: []
+on-success:
+  response:
+    text: "Checking availability for your requested dates..."
+    rephrase: simple

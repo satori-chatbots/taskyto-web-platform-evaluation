@@ -1,0 +1,12 @@
+name: faq_module
+kind: question_answering
+description: Responde a preguntas frecuentes sobre el hotel.
+questions:
+- question: ¿Cuáles son las horas de atención?
+  answer: Nuestro personal está disponible de 9 a 21 h, pero el chatbot puede ayudarte las 24 h.
+- question: ¿Qué tipos de habitaciones ofrecen?
+  answer: Ofrecemos habitaciones estándar ($80/noche), dobles ($120/noche) y suites ($200/noche).
+- question: ¿Cómo puedo cancelar una reserva?
+  answer: Puedes cancelar tu reserva contactando a nuestro personal durante las horas de atención.
+- question: ¿Hay descuentos para estancias largas?
+  answer: Sí, ofrecemos descuentos para estancias de más de 7 noches. Por favor consulta con nuestro personal.

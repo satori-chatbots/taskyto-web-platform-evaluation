@@ -1,0 +1,12 @@
+name: faq_module
+kind: question_answering
+description: This module answers frequently asked questions about the hotel.
+questions:
+- question: What are the check-in and check-out times?
+  answer: Check-in is at 3 PM and check-out is at 11 AM.
+- question: What types of rooms do you offer?
+  answer: We offer standard ($80/night), double ($120/night), and suite ($200/night).
+- question: Can I cancel my reservation?
+  answer: Yes, you can cancel your reservation up to 24 hours before your check-in time without any charge.
+- question: Do you have parking available?
+  answer: Yes, we have free parking available for all guests.

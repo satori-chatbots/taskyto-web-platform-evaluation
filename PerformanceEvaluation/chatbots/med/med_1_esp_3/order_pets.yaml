@@ -1,0 +1,26 @@
+name: order_pets
+kind: data_gathering
+description: |
+  This module allows users to order pets. Users can specify the type and quantity of each pet they want to order.
+  You can order up to 5 of each type of pet.
+data:
+  - dogs:
+      type: integer
+      required: false
+  - cats:
+      type: integer
+      required: false
+  - rabbits:
+      type: integer
+      required: false
+  - hamsters:
+      type: integer
+      required: false
+
+on-success:
+  execute:
+    language: python
+    code: calculate_order.py
+  response:
+    text: "Your order has been placed for {dogs} dogs, {cats} cats, {rabbits} rabbits, and {hamsters} hamsters."
+    rephrase: simple

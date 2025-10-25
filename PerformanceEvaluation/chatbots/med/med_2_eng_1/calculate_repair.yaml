@@ -1,0 +1,16 @@
+name: calculate_repair
+kind: action
+data:
+  - problem_description: string
+
+on-success:
+  execute:
+    language: python
+    code: |
+      # Assuming a fixed repair cost for simplicity
+      repair_cost = 100
+      return str(repair_cost)
+
+  response:
+    text: "The estimated repair cost for your issue is ${result}."
+    rephrase: simple

@@ -1,0 +1,17 @@
+name: manage_reservations
+kind: menu
+presentation: |
+  Please choose whether you want to pick up a purchased computer or bring one in for repair.
+fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+items:
+- title: Pick Up a Computer
+  memory: full
+  kind: sequence
+  references:
+    - pick_up_details
+    - calculate_total_price
+- title: Bring in for Repair
+  memory: full
+  kind: module
+  reference: repair_details

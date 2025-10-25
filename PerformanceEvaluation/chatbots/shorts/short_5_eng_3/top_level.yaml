@@ -1,0 +1,20 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to the Hotel Reservation Assistant! I can help you book a room at our hotel. 
+    Please let me know what you need assistance with.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: Make a reservation
+    memory: full
+    kind: module
+    reference: reservation
+  - title: Check reservation status
+    memory: full
+    kind: module
+    reference: check_reservation
+  - title: Frequently Asked Questions
+    kind: module
+    reference: faq

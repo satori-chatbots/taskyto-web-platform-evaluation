@@ -1,0 +1,19 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to the Pet Store Chatbot! I can help you with questions about our pets and schedule appointments for pick up.
+  fallback: I'm sorry, I did not get what you said. Can you rephrase?
+
+  items:
+  - title: Pet Q&A
+    kind: module
+    reference: pet_qa
+  - title: Schedule an Appointment
+    memory: full
+    kind: module
+    reference: schedule_appointment
+  - title: Welcome Message
+    kind: answer
+    answer: |
+      Hello! I'm here to assist you with your pet inquiries and appointment scheduling. What would you like to know?

@@ -1,0 +1,16 @@
+name: reservation
+kind: data_gathering
+description: |
+  Please provide the details for your hotel reservation, including your name, check-in date, check-out date, 
+  and the number of guests. All fields are required to complete your reservation.
+data:
+  - name: Guest Name
+  - check_in_date: date
+  - check_out_date: date
+  - number_of_guests:
+      type: integer
+
+on-success:
+  response:
+    text: "Thank you, {name}. Your reservation from {check_in_date} to {check_out_date} for {number_of_guests} guests has been successfully made!"
+    rephrase: simple

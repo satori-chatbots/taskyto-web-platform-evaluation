@@ -1,0 +1,17 @@
+name: schedule_appointment
+kind: data_gathering
+description: |
+  Please provide the date and time for your appointment to pick up your pets. 
+  Remember, our opening hours are from 9 AM to 5 PM.
+data:
+  - appointment_date: date
+  - appointment_time:
+      type: string
+      examples:
+        - "09:00"
+        - "15:30"
+
+on-success:
+  response:
+    text: "Your appointment has been scheduled for {appointment_date} at {appointment_time}."
+    rephrase: simple

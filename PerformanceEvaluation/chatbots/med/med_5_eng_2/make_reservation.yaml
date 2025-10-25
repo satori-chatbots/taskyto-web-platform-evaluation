@@ -1,0 +1,24 @@
+name: make_reservation
+kind: data_gathering
+description: |
+  To make a reservation, please provide your check-in and check-out dates, 
+  the type of room you want, and the number of rooms (up to 3 per type).
+data:
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - standard
+        - double
+        - suite
+  - number_of_rooms:
+      type: integer
+
+on-success:
+  execute:
+    language: python
+    code: calculate_total.py
+  response:
+    text: "Your reservation for {number_of_rooms} {room_type} room(s) from {check_in_date} to {check_out_date} has been made. The total cost is {result}."
+    rephrase: simple

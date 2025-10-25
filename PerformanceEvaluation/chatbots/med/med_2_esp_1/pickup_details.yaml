@@ -1,0 +1,21 @@
+name: pickup_details
+kind: data_gathering
+description: |
+  Please provide the date for pickup (store opens from 8 AM to 7 PM) and the details of the models you want to reserve.
+data:
+  - pickup_date: date
+  - model_type:
+      type: enum
+      values:
+        - laptop
+        - desktop
+        - workstation
+        - mini_pc
+  - quantity:
+      type: integer
+      required: true
+
+on-success:
+  response:
+    text: "You have reserved {quantity} {model_type}(s) for pickup on {pickup_date}."
+    rephrase: simple

@@ -1,0 +1,12 @@
+name: gather_dates
+kind: data_gathering
+description: |
+  Please provide the check-in and check-out dates for your hotel reservation.
+data:
+  - check_in_date: date
+  - check_out_date: date
+
+on-success:
+  response:
+    text: "You have selected check-in on {check_in_date} and check-out on {check_out_date}."
+    rephrase: in-caller

@@ -1,0 +1,19 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Bienvenido a nuestra central de reservas hoteleras. Estoy aquí para ayudarte a consultar disponibilidad y gestionar tus reservas. 
+    Puedes hacer preguntas frecuentes o proceder a reservar una habitación.
+  fallback: Lo siento, no entendí lo que dijiste. ¿Puedes reformularlo?
+
+  items:
+  - title: Preguntas Frecuentes
+    kind: module
+    reference: faq
+  - title: Consultar Disponibilidad
+    kind: module
+    reference: check_availability
+  - title: Hacer una Reserva
+    memory: full
+    kind: module
+    reference: make_reservation

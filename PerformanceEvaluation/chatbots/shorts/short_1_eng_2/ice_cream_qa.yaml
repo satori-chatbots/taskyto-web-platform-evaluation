@@ -1,0 +1,12 @@
+name: ice_cream_qa
+kind: question_answering
+description: This module answers common questions about the ice cream shop.
+questions:
+- question: What flavors do you have?
+  answer: We have vanilla, chocolate, strawberry, mint, and cookie dough.
+- question: Do you have any dairy-free options?
+  answer: Yes, we offer coconut and almond milk-based ice creams.
+- question: What are your opening hours?
+  answer: We are open every day from 10 AM to 10 PM.
+- question: Can I order online?
+  answer: Yes, you can place your order through our website for pickup.

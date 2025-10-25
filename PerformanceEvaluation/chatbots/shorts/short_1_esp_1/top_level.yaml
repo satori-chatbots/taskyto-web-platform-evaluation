@@ -1,0 +1,79 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to the Ice Cream Shop! I'm here to help you with your ice cream orders and answer any questions you may have.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: Ice Cream Q&A
+    kind: module
+    reference: ice_cream_qa
+  - title: Order Ice Cream
+    memory: full
+    kind: module
+    reference: order_ice_cream
+  - title: Welcome Message
+    kind: answer
+    answer: |
+      Hello! I'm your assistant for ordering ice cream. What can I help you with today?
+
+# -----> File: ice_cream_qa.yaml <-----
+name: ice_cream_qa
+kind: question_answering
+description: Useful for answering questions about the ice cream shop.
+questions:
+- question: What flavors do you have?
+  answer: We have vanilla, chocolate, strawberry, mint, and cookies & cream.
+- question: What are your opening hours?
+  answer: We are open every day from 10 AM to 10 PM.
+- question: Do you offer delivery?
+  answer: Currently, we do not offer delivery. You can visit us at our shop.
+- question: What sizes do you offer?
+  answer: We offer small, medium, and large sizes for our ice cream cups.
+
+# -----> File: order_ice_cream.yaml <-----
+name: order_ice_cream
+kind: data_gathering
+description: |
+  This module collects the user's choice of ice cream flavor and size. 
+  Please ensure to provide all the required information before proceeding.
+data:
+  - flavor:
+      type: enum
+      values:
+        - vanilla
+        - chocolate
+        - strawberry
+        - mint
+        - cookies & cream
+  - size:
+      type: enum
+      values:
+        - small
+        - medium
+        - large
+
+on-success:
+  response:
+    text: "Thank you for ordering a {size} {flavor} ice cream!"
+    rephrase: in-caller
+
+# -----> File: order_drinks.yaml <-----
+name: order_drinks
+kind: data_gathering
+description: Useful for asking how many drinks the user wants to order.
+data:
+  - num_drinks:
+      type: integer
+  - drinks:
+      type: enum
+      values:
+        - soda
+        - water
+        - juice
+
+on-success:
+  response:
+    text: "Got it! You ordered {num_drinks} {drinks}."
+    rephrase: simple

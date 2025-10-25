@@ -1,0 +1,17 @@
+name: schedule_pickup
+kind: data_gathering
+description: |
+  Please provide the date and time for your pickup appointment. 
+  The store is open from 9 AM to 5 PM.
+data:
+  - pickup_date: date
+  - pickup_time:
+      type: string
+      examples:
+        - "09:00"
+        - "15:30"
+
+on-success:
+  response:
+    text: "Your pickup appointment is scheduled for {pickup_date} at {pickup_time}."
+    rephrase: simple

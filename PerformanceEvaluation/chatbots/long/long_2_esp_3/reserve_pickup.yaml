@@ -1,0 +1,22 @@
+name: reserve_pickup
+kind: data_gathering
+description: |
+  Please provide the date for your pickup. The store opens from 8 AM to 7 PM. 
+  Also, let us know the type and quantity of computers you want to pick up (up to 5 units per type).
+data:
+  - pickup_date: date
+  - computer_type:
+      type: enum
+      values:
+        - laptop
+        - desktop
+        - workstation
+        - mini_pc
+  - quantity:
+      type: integer
+      required: true
+
+on-success:
+  response:
+    text: "Your pickup for {quantity} {computer_type}(s) is reserved for {pickup_date}."
+    rephrase: simple

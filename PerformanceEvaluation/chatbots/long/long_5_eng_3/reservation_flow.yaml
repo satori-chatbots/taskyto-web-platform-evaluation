@@ -1,0 +1,9 @@
+modules:
+- name: reservation_flow
+  kind: sequence
+  memory: full
+  references:
+    - gather_dates
+    - gather_room_type
+    - calculate_total
+    - confirm_reservation

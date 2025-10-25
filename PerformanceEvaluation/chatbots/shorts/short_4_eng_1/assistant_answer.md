@@ -1,0 +1,15 @@
+Here’s an overview of Taskyto, which is a framework designed for creating chatbots. Taskyto allows developers to define chatbot behavior using YAML files, which consist of various modules that dictate how the chatbot interacts with users. The main types of modules include:
+
+1. **Menu Module**: This is the top-level module that defines conversation alternatives. It can capture user responses, manage complex conversation flows, or reference other modules.
+
+2. **Action Module**: This module executes specific actions based on user input. It can run Python code and return responses to the user.
+
+3. **Data Gathering Module**: This module collects information from users, which can then be used in subsequent actions.
+
+4. **Question Answering Module**: This module allows the chatbot to respond to specific questions with predefined answers.
+
+5. **Sequence Module**: This module defines a series of steps in a conversation, allowing for more complex interactions.
+
+Each module can be nested and can call other modules, enabling the creation of sophisticated conversational flows. Taskyto uses a YAML syntax that is both human-readable and easy to manage, making it accessible for developers.
+
+If you have any specific questions or need assistance with creating a Taskyto chatbot, feel free to ask!

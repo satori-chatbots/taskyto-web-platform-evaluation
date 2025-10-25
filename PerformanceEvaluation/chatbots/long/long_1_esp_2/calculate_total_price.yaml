@@ -1,0 +1,23 @@
+name: calculate_total_price
+kind: action
+data:
+  - dogs: 
+      type: integer
+      required: false
+  - cats: 
+      type: integer
+      required: false
+  - rabbits: 
+      type: integer
+      required: false
+  - hamsters: 
+      type: integer
+      required: false
+
+on-success:
+  execute:
+    language: python
+    code: calculate_total_price.py
+  response:
+    text: "The total price for your order is {result}."
+    rephrase: simple

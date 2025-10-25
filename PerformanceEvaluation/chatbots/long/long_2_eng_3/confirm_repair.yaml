@@ -1,0 +1,9 @@
+name: confirm_repair
+kind: action
+data:
+  - problem_description: string
+
+on-success:
+  response:
+    text: "Your repair request has been confirmed for the problem: {problem_description}. We will contact you with updates."
+    rephrase: simple

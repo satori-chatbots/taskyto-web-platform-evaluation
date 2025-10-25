@@ -1,0 +1,23 @@
+name: make_reservation
+kind: data_gathering
+description: |
+  To make a reservation, please provide the check-in and check-out dates, 
+  and the type and number of rooms you would like to book (up to 3 rooms per type).
+data:
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - standard
+        - double
+        - suite
+  - number_of_rooms:
+      type: integer
+
+on-success:
+  execute:
+    language: python
+    code: make_reservation.py
+  response:
+    text: "Your reservation has been made for {number_of_rooms} {room_type} room(s) from {check_in_date} to {check_out_date}. Thank you!"

@@ -1,0 +1,12 @@
+name: gather_dates
+kind: data_gathering
+description: |
+  Por favor, proporciona la fecha de entrada y salida para tu reserva.
+data:
+  - check_in: date
+  - check_out: date
+
+on-success:
+  response:
+    text: "Gracias, has elegido del {check_in} al {check_out}. Ahora, ¿qué tipo de habitación prefieres?"
+    rephrase: in-caller

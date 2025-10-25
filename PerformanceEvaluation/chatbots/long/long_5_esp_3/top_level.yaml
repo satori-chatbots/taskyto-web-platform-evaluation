@@ -1,0 +1,20 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Bienvenido a la central de reservas de hotel. Estoy aquí para ayudarle con sus preguntas y gestionar sus reservas. 
+    Puede hacer preguntas sobre disponibilidad, tipos de habitaciones y precios.
+  fallback: Lo siento, no entendí lo que dijiste. ¿Puedes reformularlo?
+
+  items:
+  - title: Preguntas Frecuentes
+    kind: module
+    reference: faq_module
+  - title: Hacer una Reserva
+    memory: full
+    kind: module
+    reference: reservation_module
+  - title: Consultar Disponibilidad
+    memory: full
+    kind: module
+    reference: availability_module

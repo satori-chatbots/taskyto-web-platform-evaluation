@@ -1,0 +1,12 @@
+name: schedule_pickup
+kind: data_gathering
+description: |
+  This module gathers the appointment date for picking up pets. 
+  Please provide a date within our opening hours (9 am to 5 pm).
+data:
+  - appointment_date: date
+
+on-success:
+  response:
+    text: "Your appointment has been scheduled for {appointment_date}. Now, let's choose your pets!"
+    rephrase: in-caller

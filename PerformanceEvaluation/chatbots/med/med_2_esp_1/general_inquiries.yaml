@@ -1,0 +1,10 @@
+name: general_inquiries
+kind: question_answering
+description: This module answers general questions about the computer store.
+questions:
+- question: What models do you have?
+  answer: We have laptops ($900), desktops ($1200), workstations ($2000), and mini PCs ($700).
+- question: What are your opening hours?
+  answer: We are open from 8 AM to 7 PM every day.
+- question: How can I contact you?
+  answer: You can contact us via email at support@computerstore.com or call us at (555) 123-4567.

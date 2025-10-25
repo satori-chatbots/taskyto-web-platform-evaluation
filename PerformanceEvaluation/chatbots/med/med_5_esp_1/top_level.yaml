@@ -1,0 +1,22 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to our hotel reservation chatbot! I'm here to assist you 24/7 with any inquiries, check availability, and help you make reservations.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: Frequently Asked Questions
+    kind: module
+    reference: faq_module
+  - title: Check Availability
+    kind: module
+    reference: check_availability
+  - title: Make a Reservation
+    memory: full
+    kind: module
+    reference: make_reservation
+  - title: Welcome Message
+    kind: answer
+    answer: |
+      Hello! I'm your assistant for hotel reservations. How can I help you today?

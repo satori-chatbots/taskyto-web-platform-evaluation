@@ -1,0 +1,12 @@
+name: faq_module
+kind: question_answering
+description: This module answers frequently asked questions about the hotel.
+questions:
+- question: What are the hotel check-in and check-out times?
+  answer: Check-in is at 3 PM and check-out is at 11 AM.
+- question: Do you have free Wi-Fi?
+  answer: Yes, we offer complimentary Wi-Fi throughout the hotel.
+- question: Is breakfast included in the room rate?
+  answer: Yes, breakfast is included in all room rates.
+- question: What is your cancellation policy?
+  answer: You can cancel your reservation up to 24 hours before check-in without any charge.

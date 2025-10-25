@@ -1,0 +1,19 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to our hotel reservation center! I'm here to assist you 24/7 with your inquiries and reservations. 
+    Please feel free to ask any questions or let me know if you'd like to make a booking.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: Frequently Asked Questions
+    kind: module
+    reference: faq_module
+  - title: Check Availability
+    kind: module
+    reference: check_availability
+  - title: Make a Reservation
+    memory: full
+    kind: module
+    reference: reservation_module

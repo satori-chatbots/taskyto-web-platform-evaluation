@@ -1,0 +1,21 @@
+name: check_availability
+kind: data_gathering
+description: |
+  Please provide your check-in and check-out dates to check room availability.
+  You can also specify the type of room you are interested in.
+data:
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - standard
+        - double
+        - suite
+
+on-success:
+  execute:
+    language: python
+    code: check_availability.py
+  response:
+    text: "The availability for your selected dates is being checked. Please hold on."

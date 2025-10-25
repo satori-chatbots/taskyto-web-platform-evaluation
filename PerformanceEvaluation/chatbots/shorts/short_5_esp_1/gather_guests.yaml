@@ -1,0 +1,12 @@
+name: gather_guests
+kind: data_gathering
+description: |
+  How many guests will be staying in the room? Please provide the number of adults and children.
+data:
+  - adults: integer
+  - children: integer
+
+on-success:
+  response:
+    text: "You have indicated {adults} adult(s) and {children} child(ren) for the reservation."
+    rephrase: in-caller

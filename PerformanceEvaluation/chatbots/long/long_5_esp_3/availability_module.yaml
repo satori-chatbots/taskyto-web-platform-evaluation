@@ -1,0 +1,12 @@
+name: availability_module
+kind: data_gathering
+description: |
+  Este módulo solicita la fecha de entrada y salida para verificar la disponibilidad de habitaciones.
+data:
+  - check_in_date: date
+  - check_out_date: date
+
+on-success:
+  response:
+    text: "Verificando disponibilidad para las fechas {check_in_date} hasta {check_out_date}."
+    rephrase: simple

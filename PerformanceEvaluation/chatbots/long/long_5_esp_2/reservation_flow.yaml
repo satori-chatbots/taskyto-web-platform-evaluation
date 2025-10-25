@@ -1,0 +1,18 @@
+name: reservation_flow
+kind: menu
+presentation: |
+  Vamos a gestionar tu reserva. Primero, necesito saber las fechas de entrada y salida.
+fallback: Lo siento, no entendí lo que dijiste. ¿Puedes reformularlo?
+
+items:
+- title: Proporcionar Fechas
+  memory: full
+  kind: sequence
+  references:
+    - gather_dates
+    - gather_room_type
+    - calculate_total
+
+- title: Volver a Preguntas Frecuentes
+  kind: module
+  reference: faq_module

@@ -1,0 +1,14 @@
+name: calculate_repair
+kind: action
+data:
+  - problem_description: string
+
+on-success:
+  execute:
+    language: python
+    code: |
+      return "Your repair request has been successfully submitted."
+
+  response:
+    text: "{result}"
+    rephrase: simple

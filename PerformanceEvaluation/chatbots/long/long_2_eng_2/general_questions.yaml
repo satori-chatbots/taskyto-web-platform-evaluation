@@ -1,0 +1,10 @@
+name: general_questions
+kind: question_answering
+description: This module answers general questions about the computer store.
+questions:
+- question: What types of computers do you sell?
+  answer: We sell laptops, desktops, workstations, and mini PCs.
+- question: What are the prices of the computers?
+  answer: Laptops are $900, desktops are $1200, workstations are $2000, and mini PCs are $700.
+- question: What are your store hours?
+  answer: We are open from 8 AM to 7 PM every day.

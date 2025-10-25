@@ -1,0 +1,12 @@
+name: availability_module
+kind: data_gathering
+description: |
+  This module checks the availability of rooms for the specified dates. Please provide your check-in and check-out dates.
+data:
+  - check_in_date: date
+  - check_out_date: date
+
+on-success:
+  response:
+    text: "Checking availability for your stay from {check_in_date} to {check_out_date}."
+    rephrase: simple

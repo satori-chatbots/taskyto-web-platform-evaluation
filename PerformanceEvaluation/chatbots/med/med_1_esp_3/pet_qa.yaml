@@ -1,0 +1,10 @@
+name: pet_qa
+kind: question_answering
+description: This module answers common questions about the pets available in the store.
+questions:
+- question: What types of pets do you have?
+  answer: We have dogs, cats, rabbits, and hamsters available for purchase.
+- question: What are the prices of the pets?
+  answer: Dogs are $400, cats are $250, rabbits are $125, and hamsters are $100.
+- question: Can I order multiple pets at once?
+  answer: Yes, you can order different types and quantities of pets in the same order, up to a maximum of 5 of each type.

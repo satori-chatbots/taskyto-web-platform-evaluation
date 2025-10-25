@@ -1,0 +1,21 @@
+name: pickup_details
+kind: data_gathering
+description: |
+  Please provide the date for your pickup and the type and quantity of computers you wish to pick up. 
+  You can order up to 5 units per type.
+data:
+  - pickup_date: date
+  - computer_orders:
+      type: enum
+      values:
+        - laptops
+        - desktops
+        - workstations
+        - mini PCs
+  - quantities:
+      type: integer
+
+on-success:
+  response:
+    text: "You have scheduled a pickup for {quantities} {computer_orders} on {pickup_date}."
+    rephrase: simple

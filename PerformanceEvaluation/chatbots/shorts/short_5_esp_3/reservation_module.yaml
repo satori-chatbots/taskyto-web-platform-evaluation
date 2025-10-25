@@ -1,0 +1,16 @@
+modules:
+- name: reservation_module
+  kind: menu
+  presentation: |
+    In this module, you can provide the details for your hotel reservation.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: Gather Reservation Details
+    memory: full
+    kind: sequence
+    references:
+      - gather_dates
+      - gather_room_type
+      - gather_guest_info
+      - confirm_reservation

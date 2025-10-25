@@ -1,0 +1,19 @@
+name: check_availability
+kind: data_gathering
+description: |
+  Este módulo solicita la fecha de entrada y salida para verificar la disponibilidad de habitaciones.
+  Asegúrate de proporcionar ambas fechas para que podamos ayudarte.
+data:
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - estándar
+        - doble
+        - suite
+
+on-success:
+  response:
+    text: "He verificado la disponibilidad para {room_type} desde {check_in_date} hasta {check_out_date}. ¡Gracias por tu consulta!"
+    rephrase: simple

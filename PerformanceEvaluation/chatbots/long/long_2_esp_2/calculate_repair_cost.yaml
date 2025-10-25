@@ -1,0 +1,12 @@
+name: calculate_repair_cost
+kind: action
+data:
+  - issue_description: string
+
+on-success:
+  execute:
+    language: python
+    code: calculate_repair_cost.py
+  response:
+    text: "The estimated repair cost for your issue is {result}."
+    rephrase: simple

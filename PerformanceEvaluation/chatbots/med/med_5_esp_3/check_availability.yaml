@@ -1,0 +1,20 @@
+name: check_availability
+kind: data_gathering
+description: Consulta la disponibilidad de habitaciones en el hotel.
+data:
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - estándar
+        - doble
+        - suite
+  - number_of_rooms:
+      type: integer
+      required: true
+
+on-success:
+  response:
+    text: "He verificado la disponibilidad para {number_of_rooms} habitación(es) tipo {room_type} desde {check_in_date} hasta {check_out_date}."
+    rephrase: simple

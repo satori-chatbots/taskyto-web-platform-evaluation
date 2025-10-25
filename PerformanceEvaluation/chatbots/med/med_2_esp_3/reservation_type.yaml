@@ -1,0 +1,20 @@
+modules:
+- name: reservation_type
+  kind: menu
+  presentation: |
+    Please choose the type of reservation you would like to make.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: Reserve for Pickup
+    memory: full
+    kind: sequence
+    references:
+      - pickup_details
+      - calculate_total
+  - title: Reserve for Repair
+    memory: full
+    kind: sequence
+    references:
+      - repair_details
+      - calculate_total

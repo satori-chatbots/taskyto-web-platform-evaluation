@@ -1,0 +1,12 @@
+name: faq
+kind: question_answering
+description: Responde preguntas frecuentes sobre el hotel y las reservas.
+questions:
+- question: ¿Cuáles son los horarios de atención?
+  answer: Nuestro soporte humano está disponible de 9 a 21 h, pero el chatbot está disponible 24/7.
+- question: ¿Qué tipos de habitaciones ofrecen?
+  answer: Ofrecemos habitaciones estándar ($80), dobles ($120) y suites ($200).
+- question: ¿Puedo reservar más de una habitación?
+  answer: Sí, puedes reservar hasta 3 habitaciones por tipo.
+- question: ¿Cómo puedo cancelar o modificar una reserva?
+  answer: Puedes contactarnos durante el horario de atención o usar el chatbot para obtener más información.

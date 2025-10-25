@@ -1,0 +1,14 @@
+name: faq_module
+kind: question_answering
+description: Frequently asked questions about the hotel.
+questions:
+- question: What are the check-in and check-out times?
+  answer: Check-in is at 3 PM and check-out is at 11 AM.
+- question: Do you have parking available?
+  answer: Yes, we offer free parking for our guests.
+- question: Is breakfast included in the room rate?
+  answer: Yes, breakfast is included for all guests.
+- question: What is your cancellation policy?
+  answer: You can cancel your reservation up to 24 hours before check-in without any charges.
+- question: Are pets allowed?
+  answer: Yes, we are pet-friendly with a small additional fee.

@@ -1,0 +1,11 @@
+name: gather_dates
+kind: data_gathering
+description: |
+  Please provide your check-in and check-out dates. This information is necessary to proceed with your reservation.
+data:
+  - check_in_date: date
+  - check_out_date: date
+
+on-success:
+  response:
+    text: "Thank you! You have provided the check-in date as {check_in_date} and the check-out date as {check_out_date}."

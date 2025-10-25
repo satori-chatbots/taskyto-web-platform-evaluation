@@ -1,0 +1,21 @@
+name: calculate_total
+kind: action
+data:
+  - check_in: date
+  - check_out: date
+  - room_type:
+      type: enum
+      values:
+        - estándar
+        - doble
+        - suite
+  - number_of_rooms:
+      type: integer
+
+on-success:
+  execute:
+    language: python
+    code: calculate_total.py
+  response:
+    text: "El total por tu reserva es de {result}. ¡Gracias por elegirnos!"
+    rephrase: simple

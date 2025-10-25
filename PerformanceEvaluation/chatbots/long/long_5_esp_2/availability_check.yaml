@@ -1,0 +1,12 @@
+name: availability_check
+kind: data_gathering
+description: |
+  Por favor, proporciona las fechas para consultar la disponibilidad.
+data:
+  - check_in: date
+  - check_out: date
+
+on-success:
+  response:
+    text: "Verificando disponibilidad para las fechas {check_in} a {check_out}..."
+    rephrase: in-caller

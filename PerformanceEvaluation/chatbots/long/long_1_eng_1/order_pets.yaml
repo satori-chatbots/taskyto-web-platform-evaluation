@@ -1,0 +1,28 @@
+name: order_pets
+kind: data_gathering
+description: |
+  Please provide the details of the pets you want to order. You can choose different types and quantities of pets (maximum 5 per type).
+  After gathering the information, I will help you schedule a pickup appointment.
+data:
+  - dogs:
+      type: integer
+      required: false
+  - cats:
+      type: integer
+      required: false
+  - rabbits:
+      type: integer
+      required: false
+  - hamsters:
+      type: integer
+      required: false
+  - pickup_date:
+      type: date
+
+on-success:
+  execute:
+    language: python
+    code: calculate_total_price.py
+  response:
+    text: "Your order has been placed for {dogs} dogs, {cats} cats, {rabbits} rabbits, and {hamsters} hamsters. The total price is {result}. Your pickup is scheduled for {pickup_date}."
+    rephrase: simple

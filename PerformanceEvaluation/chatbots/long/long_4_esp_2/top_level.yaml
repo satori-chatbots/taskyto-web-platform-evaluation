@@ -1,0 +1,18 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Bienvenido a la pizzería. Soy un asistente de chatbot que puede ayudarte a realizar pedidos de pizza y responder a tus preguntas sobre nuestro menú.
+  fallback: Lo siento, no entendí lo que dijiste. ¿Puedes reformularlo?
+
+  items:
+  - title: Saludo
+    kind: answer
+    answer: |
+      ¡Hola! Bienvenido a nuestra pizzería. Estoy aquí para ayudarte con tus pedidos y preguntas.
+  - title: Preguntas y Respuestas sobre Pizza
+    kind: module
+    reference: pizza_qa
+  - title: Realizar un Pedido de Pizza
+    kind: module
+    reference: order_flow

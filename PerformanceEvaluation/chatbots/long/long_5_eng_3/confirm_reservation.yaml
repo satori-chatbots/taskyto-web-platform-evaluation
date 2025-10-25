@@ -1,0 +1,23 @@
+name: confirm_reservation
+kind: action
+data:
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - standard
+        - double
+        - suite
+  - number_of_rooms:
+      type: integer
+
+on-success:
+  execute:
+    language: python
+    code: |
+      def main(check_in_date, check_out_date, room_type, number_of_rooms):
+          return f"Your reservation for {number_of_rooms} {room_type} room(s) from {check_in_date} to {check_out_date} has been confirmed!"
+
+  response:
+    text: "{result}"

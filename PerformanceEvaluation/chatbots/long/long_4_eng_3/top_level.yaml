@@ -1,0 +1,18 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to our pizzeria chatbot! I'm here to assist you with ordering delicious pizzas and answering any questions you may have about our menu. How can I help you today?
+  fallback: I'm sorry, I did not get what you said. Can you rephrase?
+
+  items:
+  - title: Greeting
+    kind: answer
+    answer: |
+      Welcome to our pizzeria! I'm your chatbot assistant, ready to help you with your pizza orders and inquiries.
+  - title: Pizza Q&A
+    kind: module
+    reference: pizza_qa
+  - title: Start Pizza Order
+    kind: module
+    reference: order_flow

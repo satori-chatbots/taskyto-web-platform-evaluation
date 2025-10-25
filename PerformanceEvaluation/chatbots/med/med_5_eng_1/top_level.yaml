@@ -1,0 +1,20 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to our hotel reservation center! I can help you with frequently asked questions, check room availability, and manage your reservations. 
+    Please let me know how I can assist you today.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: Frequently Asked Questions
+    kind: module
+    reference: faq_module
+  - title: Check Room Availability
+    memory: full
+    kind: module
+    reference: check_availability
+  - title: Make a Reservation
+    memory: full
+    kind: module
+    reference: make_reservation

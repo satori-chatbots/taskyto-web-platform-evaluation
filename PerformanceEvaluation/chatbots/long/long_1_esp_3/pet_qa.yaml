@@ -1,0 +1,10 @@
+name: pet_qa
+kind: question_answering
+description: This module answers questions about the pets available in the store.
+questions:
+- question: What types of pets do you have?
+  answer: We have dogs, cats, rabbits, and hamsters available for adoption.
+- question: What are the prices of the pets?
+  answer: Dogs cost $400, cats $250, rabbits $125, and hamsters $100.
+- question: How many pets can I adopt at once?
+  answer: You can adopt up to 5 pets of different types in a single order.

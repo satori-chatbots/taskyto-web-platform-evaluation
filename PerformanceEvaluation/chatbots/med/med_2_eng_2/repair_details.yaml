@@ -1,0 +1,11 @@
+name: repair_details
+kind: data_gathering
+description: |
+  Please describe the problem with the equipment you want to repair.
+data:
+  - problem_description: string
+
+on-success:
+  response:
+    text: "Your repair request has been noted for the problem: {problem_description}."
+    rephrase: in-caller

@@ -1,0 +1,32 @@
+name: calculate_total
+kind: action
+data:
+  - room_type:
+      type: enum
+      values:
+        - estándar
+        - doble
+        - suite
+  - number_of_rooms:
+      type: integer
+  - nights: 
+      type: integer
+
+on-success:
+  execute:
+    language: python
+    code: |
+      def main(room_type, number_of_rooms, nights):
+          prices = {
+              "estándar": 80,
+              "doble": 120,
+              "suite": 200
+          }
+          total = prices[room_type] * number_of_rooms * nights
+          return f"El total por {nights} noche(s) en {number_of_rooms} habitación(es) de tipo {room_type} es ${total}."
+
+      return main(room_type, number_of_rooms, nights)
+
+  response:
+    text: "{result}"
+    rephrase: simple

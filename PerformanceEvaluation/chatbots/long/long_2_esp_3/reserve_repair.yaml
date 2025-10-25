@@ -1,0 +1,10 @@
+name: reserve_repair
+kind: data_gathering
+description: Please describe the problem with your computer for repair.
+data:
+  - problem_description: string
+
+on-success:
+  response:
+    text: "Your repair request has been noted. Please describe the problem: {problem_description}."
+    rephrase: simple

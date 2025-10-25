@@ -1,0 +1,22 @@
+name: reservation_module
+kind: data_gathering
+description: |
+  Este módulo solicita la fecha de entrada y salida, así como el tipo de habitación que desea reservar. 
+  Puede reservar varias habitaciones del mismo tipo (máximo 3 por tipo).
+data:
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - estándar
+        - doble
+        - suite
+  - number_of_rooms:
+      type: integer
+      required: false
+
+on-success:
+  response:
+    text: "Gracias por su reserva. Ha reservado {number_of_rooms} habitación(es) de tipo {room_type} desde {check_in_date} hasta {check_out_date}."
+    rephrase: in-caller

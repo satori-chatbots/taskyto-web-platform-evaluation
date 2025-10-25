@@ -1,0 +1,19 @@
+name: gather_user_info
+kind: data_gathering
+description: |
+  Please provide your name and contact information for the reservation.
+data:
+  - name: Guest Name
+  - email:
+      type: email
+      required: true
+  - phone_number:
+      type: Phone number
+      examples:
+        - 555-123456
+        - +34 555 12 34 56
+
+on-success:
+  response:
+    text: "Thank you, {name}. We have your contact information."
+    rephrase: in-caller

@@ -1,0 +1,13 @@
+name: manage_reservations
+kind: menu
+presentation: |
+  In this section, you can manage your reservations for pickups or repairs.
+fallback: I'm sorry, I didn't understand that. Can you please rephrase?
+
+items:
+- title: Reserve a Pickup
+  kind: module
+  reference: reserve_pickup
+- title: Reserve a Repair
+  kind: module
+  reference: reserve_repair

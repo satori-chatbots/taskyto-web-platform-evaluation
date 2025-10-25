@@ -1,0 +1,13 @@
+name: gather_guest_info
+kind: data_gathering
+description: |
+  Please provide your name and contact information for the reservation.
+data:
+  - guest_name: string
+  - contact_number: string
+  - email: string
+
+on-success:
+  response:
+    text: "Thank you, {guest_name}. We will contact you at {contact_number} and {email} for your reservation."
+    rephrase: in-caller

@@ -1,0 +1,25 @@
+name: reservation_module
+kind: data_gathering
+description: |
+  This module gathers the necessary information to make a reservation, including check-in and check-out dates, 
+  and the type and number of rooms. Please provide the details step by step.
+data:
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - standard
+        - double
+        - suite
+  - number_of_rooms:
+      type: integer
+      required: false
+
+on-success:
+  execute:
+    language: python
+    code: calculate_total.py
+  response:
+    text: "Your reservation has been made for {number_of_rooms} {room_type} room(s) from {check_in_date} to {check_out_date}. The total cost is {result}."
+    rephrase: simple

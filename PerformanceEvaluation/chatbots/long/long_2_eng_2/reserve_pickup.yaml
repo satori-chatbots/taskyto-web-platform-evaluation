@@ -1,0 +1,24 @@
+name: reserve_pickup
+kind: data_gathering
+description: |
+  Please provide the date for your pickup and the type and quantity of computers you want to pick up. 
+  You can order several types at once, up to 5 units per type.
+data:
+  - pickup_date: date
+  - computers:
+      type: enum
+      values:
+        - laptops
+        - desktops
+        - workstations
+        - mini PCs
+  - quantities:
+      type: integer
+
+on-success:
+  execute:
+    language: python
+    code: calculate_total_price_pickup.py
+  response:
+    text: "Your pickup for {quantities} {computers} on {pickup_date} has been reserved. The total price is {result}."
+    rephrase: simple

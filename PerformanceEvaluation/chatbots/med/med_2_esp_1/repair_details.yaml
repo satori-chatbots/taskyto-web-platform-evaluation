@@ -1,0 +1,11 @@
+name: repair_details
+kind: data_gathering
+description: |
+  Please describe the problem with your device for repair.
+data:
+  - problem_description: string
+
+on-success:
+  response:
+    text: "Thank you for providing the details about your problem: {problem_description}. We will contact you soon."
+    rephrase: simple

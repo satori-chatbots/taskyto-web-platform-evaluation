@@ -1,0 +1,20 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to the Hotel Reservation Chatbot! I can help you book a room at our hotel. 
+    Please let me know how I can assist you today.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: Make a reservation
+    memory: full
+    kind: module
+    reference: reservation_flow
+  - title: Frequently Asked Questions
+    kind: module
+    reference: faq
+  - title: Welcome Message
+    kind: answer
+    answer: |
+      Hello! I'm here to assist you with your hotel reservations. What would you like to do?

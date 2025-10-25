@@ -1,0 +1,10 @@
+name: general_questions
+kind: question_answering
+description: Useful for answering general questions about the computer store.
+questions:
+- question: What are the store hours?
+  answer: The store is open from 8 AM to 7 PM every day.
+- question: What types of equipment do you have?
+  answer: We have laptops ($900), desktops ($1200), workstations ($2000), and mini PCs ($700).
+- question: How can I make a reservation?
+  answer: You can make a reservation for equipment pickup or repair through this chatbot.

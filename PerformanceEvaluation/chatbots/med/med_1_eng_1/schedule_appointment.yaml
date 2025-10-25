@@ -1,0 +1,54 @@
+name: schedule_appointment
+kind: data_gathering
+description: |
+  This module allows users to select the types and quantities of pets they want to order and schedule an appointment for pick up.
+  You can choose different types of pets, with a maximum of 5 per type.
+data:
+  - dogs:
+      type: integer
+      required: false
+      examples:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+  - cats:
+      type: integer
+      required: false
+      examples:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+  - rabbits:
+      type: integer
+      required: false
+      examples:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+  - hamsters:
+      type: integer
+      required: false
+      examples:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+  - appointment_time:
+      type: string
+      required: true
+
+on-success:
+  response:
+    text: "Your appointment has been scheduled for {appointment_time}. You have ordered {dogs} dogs, {cats} cats, {rabbits} rabbits, and {hamsters} hamsters."
+    rephrase: simple

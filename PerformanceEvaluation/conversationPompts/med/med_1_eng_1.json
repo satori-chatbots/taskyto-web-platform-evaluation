@@ -1,0 +1,29 @@
+[
+    {
+        "type": "human",
+        "data": {
+            "content": "Your task is to create a chatbot for a pet store. The chatbot will allow answering user questions and scheduling appointments to pick up the pets they have ordered. Each pet will have a price. There will be dogs ($400), cats ($250), rabbits ($125), hamsters ($100). The user will be able to choose different types and quantities of pets in the same order; for example, 2 dogs and a hamster, the maximum quantity per animal will be 5.",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": null,
+            "example": false
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "To create a Taskyto chatbot for a pet store that answers user questions and schedules appointments for picking up pets, I will generate the necessary YAML content. This will include a top-level menu module, a question answering module for FAQs, and a data gathering module for scheduling appointments and selecting pets.\n\nHere is the complete YAML content for your Taskyto project:\n\n```yaml\n# -----> File: top_level.yaml <-----\nmodules:\n- name: top-level\n  kind: menu\n  presentation: |\n    Welcome to the Pet Store Chatbot! I can help you with questions about our pets and schedule appointments for pick up.\n  fallback: I'm sorry, I did not get what you said. Can you rephrase?\n\n  items:\n  - title: Pet Q&A\n    kind: module\n    reference: pet_qa\n  - title: Schedule an Appointment\n    memory: full\n    kind: module\n    reference: schedule_appointment\n  - title: Welcome Message\n    kind: answer\n    answer: |\n      Hello! I'm here to assist you with your pet inquiries and appointment scheduling. What would you like to know?\n```\n\n```yaml\n# -----> File: pet_qa.yaml <-----\nname: pet_qa\nkind: question_answering\ndescription: Useful for answering questions about the pets available in the store.\nquestions:\n- question: What types of pets do you have?\n  answer: We have dogs ($400), cats ($250), rabbits ($125), and hamsters ($100).\n- question: How much do the pets cost?\n  answer: Dogs are $400, cats are $250, rabbits are $125, and hamsters are $100.\n- question: Can I order multiple pets?\n  answer: Yes, you can order different types and quantities of pets, with a maximum of 5 per type.\n- question: How do I schedule an appointment?\n  answer: You can schedule an appointment through our scheduling module.\n```\n\n```yaml\n# -----> File: schedule_appointment.yaml <-----\nname: schedule_appointment\nkind: data_gathering\ndescription: |\n  This module allows users to select the types and quantities of pets they want to order and schedule an appointment for pick up.\n  You can choose different types of pets, with a maximum of 5 per type.\ndata:\n  - dogs:\n      type: integer\n      required: false\n      examples:\n        - 0\n        - 1\n        - 2\n        - 3\n        - 4\n        - 5\n  - cats:\n      type: integer\n      required: false\n      examples:\n        - 0\n        - 1\n        - 2\n        - 3\n        - 4\n        - 5\n  - rabbits:\n      type: integer\n      required: false\n      examples:\n        - 0\n        - 1\n        - 2\n        - 3\n        - 4\n        - 5\n  - hamsters:\n      type: integer\n      required: false\n      examples:\n        - 0\n        - 1\n        - 2\n        - 3\n        - 4\n        - 5\n  - appointment_time:\n      type: string\n      required: true\n\non-success:\n  response:\n    text: \"Your appointment has been scheduled for {appointment_time}. You have ordered {dogs} dogs, {cats} cats, {rabbits} rabbits, and {hamsters} hamsters.\"\n    rephrase: simple\n```\n\nThis YAML content defines the structure of your chatbot, including how it interacts with users, answers questions, and gathers data for scheduling appointments. You can copy and paste this code into your Taskyto project to get started. If you need further modifications or additional features, feel free to ask!",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": null,
+            "example": false,
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+        }
+    }
+]

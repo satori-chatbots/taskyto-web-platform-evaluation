@@ -1,0 +1,19 @@
+name: calculate_total_price
+kind: action
+data:
+  - dogs:
+      type: integer
+  - cats:
+      type: integer
+  - rabbits:
+      type: integer
+  - hamsters:
+      type: integer
+
+on-success:
+  execute:
+    language: python
+    code: calculate_total_price.py
+  response:
+    text: "The total price for your selected pets is ${result}."
+    rephrase: simple

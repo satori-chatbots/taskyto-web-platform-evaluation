@@ -1,0 +1,22 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Bienvenido al chatbot de reservas hoteleras. Estoy aquí para ayudarte a consultar disponibilidad y gestionar tus reservas. 
+    Puedo responder a tus preguntas frecuentes y ayudarte a reservar habitaciones.
+  fallback: Lo siento, no entendí lo que dijiste. ¿Puedes reformularlo?
+
+  items:
+  - title: Preguntas Frecuentes
+    kind: module
+    reference: faqs
+  - title: Consultar Disponibilidad
+    kind: module
+    reference: check_availability
+  - title: Hacer una Reserva
+    kind: module
+    reference: make_reservation
+  - title: Saludo
+    kind: answer
+    answer: |
+      ¡Hola! Estoy aquí para ayudarte con tus reservas. ¿En qué puedo asistirte hoy?

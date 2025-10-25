@@ -1,0 +1,32 @@
+name: make_reservation
+kind: data_gathering
+description: Realiza una reserva de habitación en el hotel.
+data:
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - estándar
+        - doble
+        - suite
+  - number_of_rooms:
+      type: integer
+      required: true
+
+on-success:
+  execute:
+    language: python
+    code: |
+      def main(check_in_date, check_out_date, room_type, number_of_rooms):
+          prices = {
+              "estándar": 80,
+              "doble": 120,
+              "suite": 200
+          }
+          total = prices[room_type] * number_of_rooms
+          return f"Tu reserva para {number_of_rooms} habitación(es) tipo {room_type} desde {check_in_date} hasta {check_out_date} ha sido confirmada. El total es ${total}."
+
+  response:
+    text: "{result}"
+    rephrase: simple

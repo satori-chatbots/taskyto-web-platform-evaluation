@@ -1,0 +1,10 @@
+name: faq
+kind: question_answering
+description: Frequently asked questions regarding hotel reservations.
+questions:
+- question: What is the cancellation policy?
+  answer: You can cancel your reservation up to 24 hours before your check-in date without any charge.
+- question: Do you offer breakfast?
+  answer: Yes, breakfast is included with your stay.
+- question: What time is check-in and check-out?
+  answer: Check-in is at 3 PM and check-out is at 11 AM.

@@ -1,0 +1,10 @@
+name: hotel_qa
+kind: question_answering
+description: Useful for answering common questions about the hotel.
+questions:
+- question: What are the check-in and check-out times?
+  answer: Check-in is at 3 PM and check-out is at 11 AM.
+- question: Do you offer free breakfast?
+  answer: Yes, we offer complimentary breakfast for all guests.
+- question: Is there a cancellation policy?
+  answer: Yes, you can cancel your reservation up to 24 hours before check-in without any charges.

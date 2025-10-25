@@ -1,0 +1,10 @@
+name: repair_issue
+kind: data_gathering
+description: Please describe the issue with the computer you are bringing for repair.
+data:
+  - issue_description: string
+
+on-success:
+  response:
+    text: "Thank you for providing the issue: {issue_description}. We will assist you with the repair."
+    rephrase: simple

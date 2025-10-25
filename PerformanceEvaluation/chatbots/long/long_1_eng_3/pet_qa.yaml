@@ -1,0 +1,10 @@
+name: pet_qa
+kind: question_answering
+description: Useful for answering questions about the pet store and available pets.
+questions:
+- question: What types of pets do you have?
+  answer: We have dogs, cats, rabbits, and hamsters available for order.
+- question: What are the prices of the pets?
+  answer: Dogs are $400, cats are $250, rabbits are $125, and hamsters are $100.
+- question: What are your opening hours?
+  answer: We are open from 9 am to 5 pm, Monday to Saturday.

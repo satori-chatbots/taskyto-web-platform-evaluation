@@ -1,0 +1,29 @@
+[
+    {
+        "type": "human",
+        "data": {
+            "content": "Create a chatbot to make hotel reservations.",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": null,
+            "example": false
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "To create a chatbot for making hotel reservations, we will define several modules including a top-level menu, data gathering for user information, and actions for processing reservations. Below is the complete YAML content for the Taskyto chatbot.\n\n```yaml\n# -----> File: top_level.yaml <-----\nmodules:\n- name: top-level\n  kind: menu\n  presentation: |\n    Welcome to the Hotel Reservation Chatbot! I can help you book a room at our hotel. \n    Please let me know how I can assist you today.\n  fallback: I'm sorry, I did not get what you said. Can you rephrase?\n\n  items:\n  - title: Make a reservation\n    memory: full\n    kind: module\n    reference: reservation\n  - title: Frequently Asked Questions\n    kind: module\n    reference: hotel_qa\n  - title: Welcome Message\n    kind: answer\n    answer: |\n      Hello! I'm here to assist you with your hotel reservations. What would you like to do?\n```\n\n```yaml\n# -----> File: reservation.yaml <-----\nmodules:\n- name: reservation\n  kind: menu\n  presentation: |\n    Please provide the details for your hotel reservation.\n  fallback: I'm sorry, I did not get what you said. Can you rephrase?\n\n  items:\n  - title: Gather reservation details\n    memory: full\n    kind: sequence\n    references:\n      - gather_user_info\n      - confirm_reservation\n```\n\n```yaml\n# -----> File: gather_user_info.yaml <-----\nname: gather_user_info\nkind: data_gathering\ndescription: |\n  This module collects the user's name, check-in date, check-out date, and room type for the reservation.\ndata:\n  - name: Guest Name\n  - check_in_date: date\n  - check_out_date: date\n  - room_type:\n      type: enum\n      values:\n        - single\n        - double\n        - suite\n\non-success:\n  response:\n    text: \"Thank you, {name}. You have requested a {room_type} room from {check_in_date} to {check_out_date}.\"\n    rephrase: in-caller\n```\n\n```yaml\n# -----> File: confirm_reservation.yaml <-----\nname: confirm_reservation\nkind: action\ndata:\n  - name: Guest Name\n  - check_in_date: date\n  - check_out_date: date\n  - room_type:\n      type: enum\n      values:\n        - single\n        - double\n        - suite\n\non-success:\n  execute:\n    language: python\n    code: confirm_reservation.py\n  response:\n    text: \"Your reservation for a {room_type} room from {check_in_date} to {check_out_date} has been confirmed. Thank you, {name}!\"\n    rephrase: simple\n```\n\n```yaml\n# -----> File: hotel_qa.yaml <-----\nname: hotel_qa\nkind: question_answering\ndescription: Useful for answering common questions about the hotel.\nquestions:\n- question: What are the check-in and check-out times?\n  answer: Check-in is at 3 PM and check-out is at 11 AM.\n- question: Do you offer free breakfast?\n  answer: Yes, we offer complimentary breakfast for all guests.\n- question: Is there a cancellation policy?\n  answer: Yes, you can cancel your reservation up to 24 hours before check-in without any charges.\n```\n\n```python\n# -----> File: confirm_reservation.py <-----\ndef main(name, check_in_date, check_out_date, room_type):\n    # Simulate reservation confirmation logic\n    print(f\"Confirming reservation for {name}...\")\n    print(f\"Check-in: {check_in_date}, Check-out: {check_out_date}, Room Type: {room_type}\")\n    \n    return \"Reservation confirmed successfully!\"\n\n# Call the main function\nresult = main(name, check_in_date, check_out_date, room_type)\n```\n\nThis YAML content defines a basic structure for a hotel reservation chatbot, including modules for gathering user information and confirming reservations. You can copy and paste this content into your Taskyto project. Let me know if you need any further modifications or additional features!",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": null,
+            "example": false,
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+        }
+    }
+]

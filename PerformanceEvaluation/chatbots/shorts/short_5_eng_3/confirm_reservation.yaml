@@ -1,0 +1,22 @@
+name: confirm_reservation
+kind: action
+data:
+  - name: Guest Name
+  - email: email
+  - phone_number: Phone number
+  - check_in: date
+  - check_out: date
+  - room_type:
+      type: enum
+      values:
+        - single
+        - double
+        - suite
+
+on-success:
+  execute:
+    language: python
+    code: confirm_reservation.py
+  response:
+    text: "Your reservation has been confirmed! We will send the details to {email}."
+    rephrase: simple

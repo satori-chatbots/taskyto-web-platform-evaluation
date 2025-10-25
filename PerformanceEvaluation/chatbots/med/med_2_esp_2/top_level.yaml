@@ -1,0 +1,15 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to the Computer Store chatbot! I can help you with general inquiries and manage your reservations for pickups or repairs.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: General Inquiries
+    kind: module
+    reference: general_inquiries
+  - title: Make a Reservation
+    memory: full
+    kind: module
+    reference: reservation_type

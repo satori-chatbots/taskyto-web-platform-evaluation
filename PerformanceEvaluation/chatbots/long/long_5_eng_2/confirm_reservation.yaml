@@ -1,0 +1,20 @@
+name: confirm_reservation
+kind: action
+data:
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - standard
+        - double
+        - suite
+  - number_of_rooms: integer
+
+on-success:
+  execute:
+    language: python
+    code: confirm_reservation.py
+  response:
+    text: "Your reservation has been confirmed! You will be staying in {number_of_rooms} {room_type} room(s) from {check_in_date} to {check_out_date}."
+    rephrase: simple

@@ -1,0 +1,14 @@
+modules:
+- name: reservation
+  kind: menu
+  presentation: |
+    Please provide the details for your hotel reservation.
+  fallback: I'm sorry, I did not get what you said. Can you rephrase?
+
+  items:
+  - title: Gather reservation details
+    memory: full
+    kind: sequence
+    references:
+      - gather_user_info
+      - confirm_reservation

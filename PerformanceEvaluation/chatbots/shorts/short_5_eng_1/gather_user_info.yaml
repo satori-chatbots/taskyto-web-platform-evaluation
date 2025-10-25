@@ -1,0 +1,19 @@
+name: gather_user_info
+kind: data_gathering
+description: |
+  This module collects the user's name, check-in date, check-out date, and room type for the reservation.
+data:
+  - name: Guest Name
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - single
+        - double
+        - suite
+
+on-success:
+  response:
+    text: "Thank you, {name}. You have requested a {room_type} room from {check_in_date} to {check_out_date}."
+    rephrase: in-caller

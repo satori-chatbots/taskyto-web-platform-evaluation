@@ -1,0 +1,20 @@
+name: check_availability
+kind: data_gathering
+description: |
+  Please provide your check-in and check-out dates to check room availability.
+data:
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - standard
+        - double
+        - suite
+  - number_of_rooms:
+      type: integer
+
+on-success:
+  response:
+    text: "Checking availability for {number_of_rooms} {room_type} room(s) from {check_in_date} to {check_out_date}."
+    rephrase: simple

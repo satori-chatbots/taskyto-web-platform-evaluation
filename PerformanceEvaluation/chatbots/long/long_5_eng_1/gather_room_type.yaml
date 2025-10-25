@@ -1,0 +1,19 @@
+name: gather_room_type
+kind: data_gathering
+description: |
+  Please specify the type of room you would like to book: standard, double, or suite. You can book up to 3 rooms of the same type.
+data:
+  - room_type:
+      type: enum
+      values:
+        - standard
+        - double
+        - suite
+  - number_of_rooms:
+      type: integer
+      required: true
+
+on-success:
+  response:
+    text: "You have chosen {number_of_rooms} {room_type} room(s)."
+    rephrase: in-caller

@@ -1,0 +1,16 @@
+name: gather_room_preferences
+kind: data_gathering
+description: |
+  What type of room would you like? Please select from the following options: Single, Double, Suite.
+data:
+  - room_type:
+      type: enum
+      values:
+        - Single
+        - Double
+        - Suite
+
+on-success:
+  response:
+    text: "You have chosen a {room_type} room."
+    rephrase: in-caller

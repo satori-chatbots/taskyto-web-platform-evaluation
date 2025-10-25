@@ -1,0 +1,24 @@
+name: make_reservation
+kind: data_gathering
+description: |
+  Este módulo solicita la fecha de entrada, fecha de salida y tipo de habitación para realizar una reserva.
+  Asegúrate de proporcionar toda la información necesaria para completar la reserva.
+data:
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - estándar
+        - doble
+        - suite
+  - number_of_rooms:
+      type: integer
+
+on-success:
+  execute:
+    language: python
+    code: calculate_total.py
+  response:
+    text: "Tu reserva para {number_of_rooms} habitación(es) {room_type} desde {check_in_date} hasta {check_out_date} ha sido confirmada. El total es {result}."
+    rephrase: simple

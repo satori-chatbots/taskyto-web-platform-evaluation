@@ -1,0 +1,20 @@
+name: pick_up_details
+kind: data_gathering
+description: |
+  Please provide the date you would like to pick up your computer (between 8 AM and 7 PM) and the type and quantity of computers you wish to pick up.
+data:
+  - pickup_date: date
+  - computer_type:
+      type: enum
+      values:
+        - laptop
+        - desktop
+        - workstation
+        - mini PC
+  - quantity:
+      type: integer
+
+on-success:
+  response:
+    text: "You have requested to pick up {quantity} {computer_type}(s) on {pickup_date}."
+    rephrase: simple

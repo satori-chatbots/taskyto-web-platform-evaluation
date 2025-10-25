@@ -1,0 +1,20 @@
+name: manage_reservations
+kind: menu
+presentation: |
+  In this module, you can make a reservation to pick up your purchased equipment or to bring in a computer for repair.
+  Please choose an option.
+fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+items:
+- title: Reserve Pickup
+  memory: full
+  kind: sequence
+  references:
+    - reserve_pickup
+    - calculate_total
+- title: Reserve Repair
+  memory: full
+  kind: sequence
+  references:
+    - reserve_repair
+    - calculate_total

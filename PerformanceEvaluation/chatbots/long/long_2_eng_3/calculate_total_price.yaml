@@ -1,0 +1,29 @@
+name: calculate_total_price
+kind: action
+data:
+  - computers:
+      type: enum
+      values:
+        - laptops
+        - desktops
+        - workstations
+        - mini PCs
+  - quantity:
+      type: integer
+
+on-success:
+  execute:
+    language: python
+    code: |
+      prices = {
+          "laptops": 900,
+          "desktops": 1200,
+          "workstations": 2000,
+          "mini PCs": 700
+      }
+      total_price = prices[computers] * quantity
+      return f"The total price for {quantity} {computers} is ${total_price}."
+
+  response:
+    text: "{result}"
+    rephrase: simple

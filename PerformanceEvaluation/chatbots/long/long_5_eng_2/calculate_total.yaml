@@ -1,0 +1,20 @@
+name: calculate_total
+kind: action
+data:
+  - check_in_date: date
+  - check_out_date: date
+  - room_type:
+      type: enum
+      values:
+        - standard
+        - double
+        - suite
+  - number_of_rooms: integer
+
+on-success:
+  execute:
+    language: python
+    code: calculate_total.py
+  response:
+    text: "The total cost for your stay is {result}."
+    rephrase: simple

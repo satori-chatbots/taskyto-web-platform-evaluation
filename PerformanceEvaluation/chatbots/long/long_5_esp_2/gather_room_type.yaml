@@ -1,0 +1,18 @@
+name: gather_room_type
+kind: data_gathering
+description: |
+  Por favor, elige el tipo de habitación que deseas reservar. Puedes reservar hasta 3 habitaciones del mismo tipo.
+data:
+  - room_type:
+      type: enum
+      values:
+        - estándar
+        - doble
+        - suite
+  - number_of_rooms:
+      type: integer
+
+on-success:
+  response:
+    text: "Has elegido {number_of_rooms} habitación(es) {room_type}. Vamos a calcular el total."
+    rephrase: in-caller

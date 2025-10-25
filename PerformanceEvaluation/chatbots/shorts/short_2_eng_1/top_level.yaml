@@ -1,0 +1,20 @@
+name: top_level
+kind: menu
+presentation: 'Please add here the description ...
+
+  '
+fallback: 'Please add here the fallback (optional) ...
+
+  '
+items:
+- title: What is this template?
+  kind: answer
+  answer: This is a menu module template
+- title: My new module
+  kind: module
+  reference: new_module
+- title: Does module_1 and module_2
+  kind: sequence
+  references:
+  - module_1
+  - module_2

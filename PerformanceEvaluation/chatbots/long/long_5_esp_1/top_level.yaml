@@ -1,0 +1,20 @@
+modules:
+- name: top-level
+  kind: menu
+  presentation: |
+    Welcome to the hotel reservation chatbot. I can help you with frequently asked questions and manage your reservations. 
+    Please note that human assistance is available from 9 AM to 9 PM, but I'm here to assist you 24/7.
+  fallback: I'm sorry, I didn't understand that. Could you please rephrase?
+
+  items:
+  - title: Frequently Asked Questions
+    kind: module
+    reference: faq_module
+  - title: Make a Reservation
+    memory: full
+    kind: module
+    reference: reservation_module
+  - title: Check Availability
+    memory: full
+    kind: module
+    reference: availability_module

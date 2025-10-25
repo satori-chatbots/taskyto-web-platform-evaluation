@@ -1,0 +1,12 @@
+name: gather_dates
+kind: data_gathering
+description: |
+  Please provide your check-in and check-out dates. This information is necessary to check room availability.
+data:
+  - check_in_date: date
+  - check_out_date: date
+
+on-success:
+  response:
+    text: "Thank you! You have selected check-in on {check_in_date} and check-out on {check_out_date}."
+    rephrase: in-caller

@@ -1,0 +1,15 @@
+modules:
+- name: reservation_process
+  kind: menu
+  presentation: |
+    Let's start your reservation. Please provide the necessary details.
+  fallback: I'm sorry, I didn't get that. Can you rephrase?
+
+  items:
+  - title: Gather Reservation Details
+    memory: full
+    kind: sequence
+    references:
+      - gather_user_info
+      - gather_room_details
+      - confirm_reservation
